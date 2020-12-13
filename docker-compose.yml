@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+   frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    stdin_open: true
+    volumes:
+      - /frontend/node_modules
+      - ./frontend:/frontend
+    tty: true
+    environment:
+      - PORT=80
+      - CHOKIDAR_USEPOLLING=true
