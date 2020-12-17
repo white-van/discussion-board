@@ -54,7 +54,7 @@ CREATE TABLE posts (
   num_children int DEFAULT 0,
   title varchar(200) NOT NULL,
   body varchar,
-  image int,
+  img int,
   upvotes int DEFAULT 0,
   view_count int DEFAULT 0,
   created_at timestamp with time zone DEFAULT (now()),
