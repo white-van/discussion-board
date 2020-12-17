@@ -59,7 +59,9 @@ CREATE TABLE thread (
   upvotes int DEFAULT 0,
   view_count int DEFAULT 0,
   created_at timestamp with time zone DEFAULT (now()),
-  updated_at timestamp with time zone DEFAULT (now())
+  updated_at timestamp with time zone DEFAULT (now()),
+  is_locked boolean DEFAULT 0,
+  is_anon boolean DEFAULT 0
 );
 
 CREATE TABLE thread_categories (
