@@ -6,3 +6,5 @@ run:
 
 build:
 	go build -o bin/pizza httpd/main.go
+
+setup:
