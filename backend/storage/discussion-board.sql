@@ -31,7 +31,7 @@ CREATE TABLE courses (
   course_name varchar(100),
   course_code varchar(50) NOT NULL,
   semester_id int REFERENCES semesters (id) ON DELETE CASCADE,
-  is_archived boolean
+  is_archived boolean DEFAULT 0
 );
 
 CREATE TABLE enrolment (
@@ -47,10 +47,10 @@ CREATE TABLE categories (
   course int REFERENCES courses (id) ON DELETE CASCADE
 );
 
-CREATE TABLE posts (
+CREATE TABLE thread (
   id SERIAL PRIMARY KEY,
   author int REFERENCES users (user_id) ON DELETE CASCADE,
-  parent_id int REFERENCES posts (id) ON DELETE CASCADE,
+  parent_id int REFERENCES thread (id) ON DELETE CASCADE,
   num_children int DEFAULT 0,
   course int REFERENCES courses (id) ON DELETE CASCADE,
   title varchar(200) NOT NULL,
@@ -62,10 +62,10 @@ CREATE TABLE posts (
   updated_at timestamp with time zone DEFAULT (now())
 );
 
-CREATE TABLE post_categories (
+CREATE TABLE thread_categories (
   category_id int REFERENCES categories (id) ON DELETE CASCADE,
-  post_id int REFERENCES posts (id) ON DELETE CASCADE,
-  PRIMARY KEY (category_id, post_id)
+  thread_id int REFERENCES thread (id) ON DELETE CASCADE,
+  PRIMARY KEY (category_id, thread_id)
 );
 
 CREATE TABLE award_types (
@@ -77,6 +77,6 @@ CREATE TABLE award_types (
 CREATE TABLE awards (
   id SERIAL PRIMARY KEY,
   award_type int REFERENCES award_types (id) ON DELETE CASCADE,
-  post int REFERENCES posts (id) ON DELETE CASCADE,
+  thread int REFERENCES thread (id) ON DELETE CASCADE,
   gifter int REFERENCES users (user_id) ON DELETE CASCADE
 );
