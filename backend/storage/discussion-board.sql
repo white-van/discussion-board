@@ -72,6 +72,17 @@ CREATE TABLE thread_categories (
   PRIMARY KEY (category_id, thread_id)
 );
 
+CREATE TABLE comments (
+  comment_id SERIAL PRIMARY KEY,
+  author int REFERENCES users (user_id) ON DELETE CASCADE,
+  parent_id int REFERENCES thread (thread_id) ON DELETE CASCADE,
+  body text NOT NULL,
+  created_at timestamp with time zone DEFAULT (now()),
+  updated_at timestamp with time zone DEFAULT (now()),
+  is_locked boolean DEFAULT false,
+  is_anon boolean DEFAULT false
+);
+
 CREATE TABLE award_types (
   award_type_id SERIAL PRIMARY KEY,
   award_name varchar(50) NOT NULL,
