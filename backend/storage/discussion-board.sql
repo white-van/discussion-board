@@ -59,7 +59,7 @@ CREATE TABLE thread (
   body varchar,
   img int,
   upvotes int DEFAULT 0 NOT NULL,
-  view_count int DEFAULT 0,
+  view_count int DEFAULT 0 NOT NULL,
   created_at timestamp with time zone DEFAULT (now()),
   updated_at timestamp with time zone DEFAULT (now()),
   is_locked boolean DEFAULT 0,
