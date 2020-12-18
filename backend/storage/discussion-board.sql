@@ -83,6 +83,28 @@ CREATE TABLE comments (
   is_anon boolean DEFAULT false
 );
 
+CREATE TABLE polls (
+  poll_id SERIAL PRIMARY KEY,
+  thread_id int REFERENCES threads (thread_id) ON DELETE CASCADE,
+  opt_1_name varchar(50) NOT NULL,
+  opt_2_name varchar(50) NOT NULL,
+  opt_3_name varchar(50),
+  opt_4_name varchar(50),
+  opt_1_votes int DEFAULT 0 NOT NULL,
+  opt_2_votes int DEFAULT 0 NOT NULL,
+  opt_3_votes int,
+  opt_4_votes int,
+  created_at timestamp with time zone DEFAULT (now()),
+  closes_at timestamp with time zone DEFAULT (now())
+);
+
+CREATE TABLE poll_results (
+  vote_id SERIAL PRIMARY KEY,
+  poll_id int REFERENCES polls (poll_id) ON DELETE CASCADE,
+  user_id int REFERENCES users (user_id) ON DELETE CASCADE,
+  choice int
+);
+
 CREATE TABLE award_types (
   award_type_id SERIAL PRIMARY KEY,
   award_name varchar(50) NOT NULL,
