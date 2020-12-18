@@ -80,7 +80,7 @@ CREATE TABLE award_types (
 
 CREATE TABLE awards (
   id SERIAL PRIMARY KEY,
-  award_type int REFERENCES award_types (id) ON DELETE CASCADE,
+  award_type int REFERENCES award_types (award_type_id) ON DELETE CASCADE,
   thread int REFERENCES thread (id) ON DELETE CASCADE,
   gifter int REFERENCES users (user_id) ON DELETE CASCADE
 );
