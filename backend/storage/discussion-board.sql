@@ -73,7 +73,7 @@ CREATE TABLE thread_categories (
 );
 
 CREATE TABLE award_types (
-  id SERIAL PRIMARY KEY,
+  award_type_id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
   image int
 );
