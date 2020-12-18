@@ -15,7 +15,7 @@ CREATE TABLE institutions (
 );
 
 CREATE TABLE semesters (
-  id SERIAL PRIMARY KEY,
+  semester_idSERIAL PRIMARY KEY,
   semester_name varchar(100) NOT NULL,
   institution_id int NOT NULL REFERENCES institutions (id) ON DELETE CASCADE
 );
