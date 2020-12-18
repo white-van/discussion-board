@@ -50,7 +50,7 @@ CREATE TABLE categories (
 );
 
 CREATE TABLE thread (
-  id SERIAL PRIMARY KEY,
+  thread_id SERIAL PRIMARY KEY,
   author int REFERENCES users (user_id) ON DELETE CASCADE,
   parent_id int REFERENCES thread (id) ON DELETE CASCADE,
   num_children int DEFAULT 0,
