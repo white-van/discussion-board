@@ -38,6 +38,8 @@ CREATE TABLE enrolment (
   user_id int REFERENCES users (user_id) ON DELETE CASCADE,
   course_id int REFERENCES courses (id) ON DELETE CASCADE,
   position position_types NOT NULL,
+  question_contributions int DEFAULT 0,
+  answer_contributions int DEFAULT 0,
   PRIMARY KEY (user_id, course_id)
 );
 
