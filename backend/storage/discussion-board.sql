@@ -1,4 +1,5 @@
 CREATE TYPE position_types AS ENUM ('Student', 'TA', 'Instructor');
+CREATE TYPE vote_types AS ENUM ('upvote', 'downvote');
 
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
@@ -81,6 +82,13 @@ CREATE TABLE comments (
   updated_at timestamp with time zone DEFAULT (now()),
   is_locked boolean DEFAULT false,
   is_anon boolean DEFAULT false
+);
+
+CREATE TABLE post_votes (
+  user_id int REFERENCES users (user_id) ON DELETE CASCADE,
+  thread_id int REFERENCES thread (thread_id) ON DELETE CASCADE,
+  vote vote_types NOT NULL, 
+  PRIMARY KEY (user_id, thread_id)
 );
 
 CREATE TABLE polls (
