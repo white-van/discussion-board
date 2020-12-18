@@ -53,7 +53,7 @@ CREATE TABLE thread (
   thread_id SERIAL PRIMARY KEY,
   author int REFERENCES users (user_id) ON DELETE CASCADE,
   parent_id int REFERENCES thread (thread_id) ON DELETE CASCADE,
-  num_children int DEFAULT 0,
+  num_children int DEFAULT 0 NOT NULL,
   course int REFERENCES courses (id) ON DELETE CASCADE,
   title varchar(200) NOT NULL,
   body varchar,
