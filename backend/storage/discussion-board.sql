@@ -56,7 +56,7 @@ CREATE TABLE thread (
   num_children int DEFAULT 0 NOT NULL,
   course int REFERENCES courses (id) ON DELETE CASCADE,
   title varchar(200) NOT NULL,
-  body varchar,
+  body text NOT NULL,
   img int,
   upvotes int DEFAULT 0 NOT NULL,
   view_count int DEFAULT 0 NOT NULL,
