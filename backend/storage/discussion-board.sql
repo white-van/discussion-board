@@ -54,7 +54,7 @@ CREATE TABLE thread (
   author int REFERENCES users (user_id) ON DELETE CASCADE,
   parent_id int REFERENCES thread (thread_id) ON DELETE CASCADE,
   num_children int DEFAULT 0 NOT NULL,
-  course int REFERENCES courses (id) ON DELETE CASCADE,
+  course_id int REFERENCES courses (course_id) ON DELETE CASCADE,
   title varchar(200) NOT NULL,
   body text NOT NULL,
   img int,
