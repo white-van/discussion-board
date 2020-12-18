@@ -9,7 +9,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE institutions (
-  id SERIAL PRIMARY KEY,
+  institution_id SERIAL PRIMARY KEY,
   name varchar(100) NOT NULL,
   location varchar(100)
 );
