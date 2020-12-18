@@ -27,7 +27,7 @@ CREATE TABLE administrators (
 );
 
 CREATE TABLE courses (
-  id SERIAL PRIMARY KEY,
+  course_id SERIAL PRIMARY KEY,
   course_name varchar(100),
   course_code varchar(50) NOT NULL,
   semester_id int REFERENCES semesters (id) ON DELETE CASCADE,
