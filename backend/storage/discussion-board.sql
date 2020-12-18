@@ -44,7 +44,7 @@ CREATE TABLE enrolment (
 );
 
 CREATE TABLE categories (
-  id SERIAL PRIMARY KEY,
+  category_id SERIAL PRIMARY KEY,
   category_name varchar(100) NOT NULL,
   course int REFERENCES courses (id) ON DELETE CASCADE
 );
