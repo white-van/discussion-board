@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import styles from "../styles/Home.module.css";
+import { Heading, Link } from '@chakra-ui/react';
 
 export default function Home(props) {
   const { formatMessage } = useIntl();
@@ -17,9 +18,9 @@ export default function Home(props) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <Heading as="h1" size="2xl" mb="2">
+          Welcome to <Link color="teal.500" href="https://nextjs.org">Next.js!</Link>
+        </Heading>
         <p>{f("hello")}</p>
         <p>{f("welcomeMessage")}</p>
         <p>Current locale: {locale}</p>
