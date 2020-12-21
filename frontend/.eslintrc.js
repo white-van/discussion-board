@@ -1,31 +1,27 @@
-{
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "tsconfigRootDir": "../frontend",
-    "project": "./tsconfig.json",
-    "ecmaVersion": 2019,
-    "sourceType": "module"
+module.exports = {
+  root: true,
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: "./tsconfig.json",
+    ecmaVersion: 2019,
+    sourceType: "module",
   },
-  "settings": {
-    "react":{
-      "version": "latest"
-    }
+  settings: {
+    react: {
+      version: "latest",
+    },
   },
-  "plugins": [
-    "@typescript-eslint",
-    "simple-import-sort",
-    "prettier"
-  ],
-  "extends": [
+  plugins: ["@typescript-eslint", "simple-import-sort", "prettier"],
+  extends: [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier"
+    "prettier",
   ],
-  "rules":{
+  rules: {
     // TODO: This was annoying, maybe we can look into it later
     "@typescript-eslint/explicit-module-boundary-types": "off",
 
@@ -36,28 +32,28 @@
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "no-implicit-coercion": "error",
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
   },
-  "overrides": [
+  overrides: [
     {
-      "files":["**/*.{ts,tsx}"],
+      files: ["**/*.{ts,tsx}"],
 
-      "extends": [
+      extends: [
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
-      "rules": {
+      rules: {
         // @typescript-eslint
         "@typescript-eslint/ban-ts-comment": "warn",
         "@typescript-eslint/camelcase": "off",
         "@typescript-eslint/class-name-casing": [
           "off",
           {
-            "allowUnderscorePrefix": true
-          }
+            allowUnderscorePrefix: true,
+          },
         ],
-        "indent": ["error", 2],
+        indent: ["error", 2],
 
         // Without the following, you will get inconsistent behaviour compared to barebone @typescript-eslint
         "@typescript-eslint/explicit-function-return-type": "off",
@@ -65,9 +61,9 @@
         // Allow promise to resolve without value (eg. blocking the flow of an execution)
         "@typescript-eslint/no-misused-promises": [
           "error",
-          { "checksVoidReturn": false }
-        ]
-      }
-    }
-  ]
-}
+          { checksVoidReturn: false },
+        ],
+      },
+    },
+  ],
+};
