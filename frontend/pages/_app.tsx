@@ -1,3 +1,7 @@
+// TODO: FIX THESE ESLINT ERROR
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { ChakraProvider } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { IntlProvider } from "react-intl";

@@ -1,0 +1,61 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "tsconfigRootDir": "../frontend",
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2019,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "rules":{
+    // TODO: This was annoying, maybe we can look into it later
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+
+    "no-console": "warn",
+    "no-undef": "off", // https://github.com/eslint/typescript-eslint-parser/issues/437
+    "no-unused-vars": "warn",
+
+    "no-implicit-coercion": "error"
+  },
+  "overrides": [
+    {
+      "files":["**/*.{ts,tsx}"],
+
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      ],
+      "rules": {
+        // @typescript-eslint
+        "@typescript-eslint/ban-ts-comment": "warn",
+        "@typescript-eslint/camelcase": "off",
+        "@typescript-eslint/class-name-casing": [
+          "off",
+          {
+            "allowUnderscorePrefix": true
+          }
+        ],
+        "indent": ["error", 2],
+
+        // Without the following, you will get inconsistent behaviour compared to barebone @typescript-eslint
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-explicit-any": "warn",
+        // Allow promise to resolve without value (eg. blocking the flow of an execution)
+        "@typescript-eslint/no-misused-promises": [
+          "error",
+          { "checksVoidReturn": false }
+        ]
+      }
+    }
+  ]
+}
