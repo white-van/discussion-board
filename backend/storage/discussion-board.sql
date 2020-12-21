@@ -1,5 +1,6 @@
 CREATE TYPE position_types AS ENUM ('Student', 'TA', 'Instructor');
 CREATE TYPE vote_types AS ENUM ('upvote', 'downvote');
+CREATE TYPE post_types AS ENUM ('question', 'note', 'poll');
 
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
@@ -58,13 +59,19 @@ CREATE TABLE thread (
   course_id int REFERENCES courses (course_id) ON DELETE CASCADE,
   title varchar(200),
   body text,
-  img int,
+  post_type post_types NOT NULL,
   upvotes int DEFAULT 0 NOT NULL,
   view_count int DEFAULT 0 NOT NULL,
   created_at timestamp with time zone DEFAULT (now()),
   updated_at timestamp with time zone DEFAULT (now()),
   is_locked boolean DEFAULT false,
   is_anon boolean DEFAULT false
+);
+
+CREATE TABLE note (
+  note_id SERIAL PRIMARY KEY,
+  thread_id int REFERENCES thread (thread_id) ON DELETE CASCADE,
+  img int
 );
 
 CREATE TABLE thread_categories (
@@ -91,26 +98,23 @@ CREATE TABLE post_votes (
   PRIMARY KEY (user_id, thread_id)
 );
 
-CREATE TABLE polls (
+CREATE TABLE poll (
   poll_id SERIAL PRIMARY KEY,
-  thread_id int REFERENCES threads (thread_id) ON DELETE CASCADE,
-  opt_1_name varchar(50) NOT NULL,
-  opt_2_name varchar(50) NOT NULL,
-  opt_3_name varchar(50),
-  opt_4_name varchar(50),
-  opt_1_votes int DEFAULT 0 NOT NULL,
-  opt_2_votes int DEFAULT 0 NOT NULL,
-  opt_3_votes int,
-  opt_4_votes int,
-  created_at timestamp with time zone DEFAULT (now()),
+  thread_id int REFERENCES thread (thread_id) ON DELETE CASCADE,
   closes_at timestamp with time zone DEFAULT (now())
 );
 
-CREATE TABLE poll_results (
-  vote_id SERIAL PRIMARY KEY,
-  poll_id int REFERENCES polls (poll_id) ON DELETE CASCADE,
+CREATE TABLE poll_option (
+  option_id SERIAL PRIMARY KEY,
+  poll_id int REFERENCES poll (poll_id) ON DELETE CASCADE,
+  option_count int NOT NULL DEFAULT 0,
+  option_name text NOT NULL
+);
+
+CREATE TABLE poll_votes (
+  option_id int REFERENCES poll_option (option_id) ON DELETE CASCADE,
   user_id int REFERENCES users (user_id) ON DELETE CASCADE,
-  choice int
+  PRIMARY KEY (user_id, option_id)
 );
 
 CREATE TABLE award_types (
