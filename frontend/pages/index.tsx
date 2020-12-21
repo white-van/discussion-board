@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { Heading, Link } from '@chakra-ui/react';
+import { Heading, Link } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
@@ -23,7 +23,10 @@ export default function Home() {
 
       <main className={styles.main}>
         <Heading as="h1" size="2xl" mb="2">
-          Welcome to <Link color="teal.500" href="https://nextjs.org">Next.js!</Link>
+          Welcome to{" "}
+          <Link color="teal.500" href="https://nextjs.org">
+            Next.js!
+          </Link>
         </Heading>
         <p>{f("hello")}</p>
         <p>{f("welcomeMessage")}</p>
