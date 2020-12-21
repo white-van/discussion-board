@@ -22,8 +22,8 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <ChakraButton
-    colorScheme="blue"
-    {...props}
+      colorScheme="blue"
+      {...props}
     >
       {label}
     </ChakraButton>
