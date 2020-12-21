@@ -53,7 +53,6 @@ module.exports = {
             allowUnderscorePrefix: true,
           },
         ],
-        indent: ["error", 2],
 
         // Without the following, you will get inconsistent behaviour compared to barebone @typescript-eslint
         "@typescript-eslint/explicit-function-return-type": "off",
