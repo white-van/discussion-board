@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { Heading, Link } from '@chakra-ui/react';
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
+
 import styles from "../styles/Home.module.css";
-import { Heading, Link } from '@chakra-ui/react';
 
 export default function Home() {
   const { formatMessage } = useIntl();

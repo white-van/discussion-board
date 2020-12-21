@@ -7,11 +7,18 @@
     "ecmaVersion": 2019,
     "sourceType": "module"
   },
+  "settings": {
+    "react":{
+      "version": "latest"
+    }
+  },
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "simple-import-sort"
   ],
   "extends": [
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:jsx-a11y/recommended"
@@ -23,7 +30,9 @@
     "no-console": "warn",
     "no-undef": "off", // https://github.com/eslint/typescript-eslint-parser/issues/437
     "no-unused-vars": "warn",
-
+    "react/react-in-jsx-scope": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
     "no-implicit-coercion": "error"
   },
   "overrides": [
