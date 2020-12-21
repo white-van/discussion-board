@@ -13,7 +13,6 @@ import { Provider } from "react-redux";
 import * as locales from "../content/locale";
 import configureStore from "../stores/store";
 
-
 export default function App({ Component, pageProps }) {
   const store = configureStore(pageProps.initialReduxState);
   const router = useRouter();

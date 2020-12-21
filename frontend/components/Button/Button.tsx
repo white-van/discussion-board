@@ -1,6 +1,6 @@
 import "./button.css";
 
-import { Button as ChakraButton } from '@chakra-ui/react';
+import { Button as ChakraButton } from "@chakra-ui/react";
 import React from "react";
 
 export interface ButtonProps {
@@ -22,10 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }: ButtonProps) => {
   return (
-    <ChakraButton
-      colorScheme="blue"
-      {...props}
-    >
+    <ChakraButton colorScheme="blue" {...props}>
       {label}
     </ChakraButton>
   );
