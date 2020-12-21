@@ -8,7 +8,6 @@
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "lint": "eslint . --ext .{ts,tsx}",
-    "prepush": "npm run lint",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
