@@ -1,9 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/unbound-method */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { Heading, Link } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
+
 import styles from "../styles/Home.module.css";
 
-export default function Home(props) {
+export default function Home() {
   const { formatMessage } = useIntl();
   const f = (id) => formatMessage({ id });
   const router = useRouter();
@@ -17,9 +22,12 @@ export default function Home(props) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <Heading as="h1" size="2xl" mb="2">
+          Welcome to{" "}
+          <Link color="teal.500" href="https://nextjs.org">
+            Next.js!
+          </Link>
+        </Heading>
         <p>{f("hello")}</p>
         <p>{f("welcomeMessage")}</p>
         <p>Current locale: {locale}</p>

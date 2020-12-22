@@ -1,12 +1,14 @@
+// TODO: FIX THESE LINT ERRORS
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import axios from "axios";
 
 export const serverUrl = "http://localhost";
 
-const enforceTrailingSlash = (url: string) => {
+const enforceTrailingSlash = (url: string): string => {
   return url.endsWith("/") ? url : url + "/";
 };
 
-export function getRequest(uri: string, searchParams) {
+export function getRequest(uri: string, searchParams: string) {
   const params = searchParams ? searchParams : "";
   return axios.get(enforceTrailingSlash(`${serverUrl}${uri}`) + params);
 }
