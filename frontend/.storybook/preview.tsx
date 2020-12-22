@@ -9,9 +9,9 @@ import * as React from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
 const ColorModeToggleBar = () => {
-  const { toggleColorMode } = useColorMode()
-  const SwitchIcon = useColorModeValue(FaMoon, FaSun)
-  const nextMode = useColorModeValue("dark", "light")
+  const { toggleColorMode } = useColorMode();
+  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+  const nextMode = useColorModeValue("dark", "light");
 
   return (
     <Flex justify="flex-end">
@@ -23,20 +23,20 @@ const ColorModeToggleBar = () => {
         color="current"
         marginLeft="2"
         onClick={toggleColorMode}
-        icon={<SwitchIcon/>}
+        icon={<SwitchIcon />}
       />
     </Flex>
-  )
-}
+  );
+};
 
 const withChakra = (StoryFn: Function) => (
   <ChakraProvider>
-    <ColorModeToggleBar/>
+    <ColorModeToggleBar />
     <StoryFn />
   </ChakraProvider>
-)
+);
 
-export const decorators = [withChakra]
+export const decorators = [withChakra];
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
