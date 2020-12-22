@@ -1,7 +1,7 @@
 # discussion-board
 
 ## Project Structure
-```text
+```textd
 .
 ├── backend                   # WIP
 ├── frontend                  
