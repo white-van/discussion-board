@@ -20,11 +20,15 @@ user_router := router.Group("/user"){
     user_router.POST("/login", handleUserLogin) // The request responds to the url matching "/user/login" and should include
     // parameters we require for authentication (this will be done later), we can send the user_id to the front end as a response here
 
+    Should we add a reset password for a user route when we add authentication ?
+
 }
 
 The following are all routes for a specific user based on their user_id. Certain routes should only be accessible to professors, e.g. course creation, and archive course.
 
 specific_user_router := router.Group("/user/:user_id"){
+
+    user_id is a prerequiste for all requests below
 
     specific_user_router.POST("/enroll", handleEnrollment) // The request responds to url matching: "/user/:user_id/enroll?course=:course_id"
 
@@ -32,6 +36,17 @@ specific_user_router := router.Group("/user/:user_id"){
 
     specific_user_router.POST("/:course_id/replyToPost", handleReplyToPost) // This route can be used for a user replying to posts made,
     // the request should include information about the post that can be used to find it (thread_id?)
+
+    specific_user_router.POST("/:course_id/:thread_id/createComment", handleComment) // The request responds to the url matching: "/user/:user_id/:course_id/:thread_id/createComment"
+    // Since each comment is specific to a thread in a specific course we will require course_id, and thread_id for comments along with the prerequiste user_id as well
+
+    specific_user_router.DELETE("/:course_id/:thread_id", handleDeletePost) // The request responds to the url matching "/users/:user_id/:course_id/:thread_id/deletePost"
+    // Middleware will be required to make sure only the author of the post, or an instructor is able to delete the post
+    // for author authentication we can check the user_id supplied with the author entry of the thread
+
+    specific_user_router.PUT("/:course_id/:thread_id/:comment_id/upVote", handleUpVote) // The request responds to the url matching "/users/:user_id/:course_id/:thread_id/:comment_id/upVote"
+    // This is an update method that allows users to upvote comments on a given post.
+    // PUT can be replaced by PATCH, since both can be used for Updating, but PATCH seems to be for modfiying, maybe use PATCH here instead?
 
     Do we make some middleware for the routes below to make sure the user here is a professor and is allowed to create/archive courses?
 
