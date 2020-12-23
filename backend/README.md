@@ -15,6 +15,10 @@ Some terminology:
 - cid = course_id
 - tid = thread_id
 - comid = comment_id
+- cname = course_name
+- ccode = course_code
+- semid = semester_id
+- isarc = is_archived
 
 ### Structure
 
@@ -22,12 +26,12 @@ userRouter := router.Group("/user"){
 
     userRouter.POST("/register", handleUserRegister)
     // The request respondst to the url matching "/user/register" and should include
-    // information such as first_name, last_name, email. How is user_id being generated? will it be given to us in the request or is is
+    // information such as first_name, last_name, email. How is uid being generated? will it be given to us in the request or is is
     // it made automatically in the database and sent to the front end in a different call
 
     userRouter.POST("/login", handleUserLogin)
     // The request responds to the url matching "/user/login" and should include
-    // parameters we require for authentication (this will be done later), we can send the user_id to the front end as a response here
+    // parameters we require for authentication (this will be done later), we can send the uid to the front end as a response here
 
     Should we add a reset password for a user route when we add authentication ? (Y)
 
@@ -63,10 +67,10 @@ specificUserRouter := router.Group("/user/:uid"){
     Do we make some middleware for the routes below to make sure the user here is a professor and is allowed to create/archive courses?
 
     specificUserRouter.POST("/createCourse", handleCourseCreation) // This request responds to url matching "/user/:uid/createCourse"
-    // This can be used by a professor to create a course, we require cid ? (how is this generated), course_name, course_code, semester_id, and is_archived
+    // This can be used by a professor to create a course, we require cid ? (how is this generated), cname, ccode, semid, and isarc
     // for the db entry
 
     specificUserRouter.POST("/:cid/archiveCourse", handleArchiveCourse) // This request responds to the url matching "/user/:uid/:cid/archiveCourse"
-    // and is used for archiving a course in the db, we require the cid for looking up the course in the db, and we can just update the is_archived value to be true
+    // and is used for archiving a course in the db, we require the cid for looking up the course in the db, and we can just update the isarc value to be true
 
 }
