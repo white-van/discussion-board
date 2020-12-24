@@ -1,23 +1,19 @@
 import React from "react";
+import Head from "next/head";
 import { Navbar } from "../Navbar/Navbar";
 import { Footer } from "../Footer/Footer";
+import styles from "./PageWrapper.module.css";
 
-export interface PageWrapperProps {
-  children: any;
-}
-
-/**
- * Primary UI component for user interaction
- */
-
-export const PageWrapper: React.FC<PageWrapperProps> = ({
-  children,
-}: PageWrapperProps) => {
+export const PageWrapper = ({ children, title }) => {
   return (
-    <>
+    <div className={styles.container}>
+      <Head>
+        <title>{title}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Navbar />
-      {children}
+      <main className={styles.main}>{children}</main>
       <Footer />
-    </>
+    </div>
   );
 };

@@ -1,20 +1,7 @@
 import React from "react";
-import styles from "../../styles/Home.module.css";
+import styles from "./Footer.module.css";
 
-export interface FooterProps {
-  /**
-   * Button contents
-   */
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
-}
-/**
- * Primary UI component for user interaction
- */
-
-export const Footer: React.FC<FooterProps> = ({ ...props }: FooterProps) => {
+export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <a

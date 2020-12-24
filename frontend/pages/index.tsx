@@ -2,11 +2,9 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { Heading, Link } from "@chakra-ui/react";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import { PageWrapper } from "../components/PageWrapper/PageWrapper";
-
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -16,61 +14,52 @@ export default function Home() {
   const { locale, locales, defaultLocale } = router;
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Homepage</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <PageWrapper>
-        <main className={styles.main}>
-          <Heading as="h1" size="2xl" mb="2">
-            Welcome to{" "}
-            <Link color="teal.500" href="https://nextjs.org">
-              Next.js!
-            </Link>
-          </Heading>
-          <p>{f("hello")}</p>
-          <p>{f("welcomeMessage")}</p>
-          <p>Current locale: {locale}</p>
-          <p>Default locale: {defaultLocale}</p>
-          <p>Configured locales: {JSON.stringify(locales)}</p>
+    <PageWrapper title="Homepage">
+      <Heading as="h1" size="2xl" mb="2">
+        Welcome to{" "}
+        <Link
+          color="teal.500"
+          href="https://github.com/white-van/discussion-board"
+        >
+          Dialog!
+        </Link>
+      </Heading>
+      <p>{f("hello")}</p>
+      <p>{f("welcomeMessage")}</p>
+      <p>Current locale: {locale}</p>
+      <p>Default locale: {defaultLocale}</p>
+      <p>Configured locales: {JSON.stringify(locales)}</p>
 
-          <p className={styles.description}>
-            Get started by editing{" "}
-            <code className={styles.code}>pages/index.js</code>
-          </p>
+      <div className={styles.grid}>
+        <a
+          href="https://github.com/white-van/discussion-board"
+          className={styles.card}
+        >
+          <h3>Contribute &rarr;</h3>
+          <p>View the project directory here.</p>
+        </a>
 
-          <div className={styles.grid}>
-            <a href="https://nextjs.org/docs" className={styles.card}>
-              <h3>Documentation &rarr;</h3>
-              <p>Find in-depth information about Next.js features and API.</p>
-            </a>
+        <a
+          href="https://docs.google.com/document/d/1wARWeLMthuZG_HX8N8bkGDzzljB8jNmCZY375sjEOnk/edit"
+          className={styles.card}
+        >
+          <h3>Learn &rarr;</h3>
+          <p>Learn about Dialog here!</p>
+        </a>
 
-            <a href="https://nextjs.org/learn" className={styles.card}>
-              <h3>Learn &rarr;</h3>
-              <p>Learn about Next.js in an interactive course with quizzes!</p>
-            </a>
+        <a href="https://chakra-ui.com/" className={styles.card}>
+          <h3>Chakra-UI &rarr;</h3>
+          <p>Discover Chakra-UI, the beautiful CSS framework we use.</p>
+        </a>
 
-            <a
-              href="https://github.com/vercel/next.js/tree/master/examples"
-              className={styles.card}
-            >
-              <h3>Examples &rarr;</h3>
-              <p>Discover and deploy boilerplate example Next.js projects.</p>
-            </a>
-
-            <a
-              href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className={styles.card}
-            >
-              <h3>Deploy &rarr;</h3>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
-            </a>
-          </div>
-        </main>
-      </PageWrapper>
-    </div>
+        <a
+          href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          className={styles.card}
+        >
+          <h3>Deploy &rarr;</h3>
+          <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
+        </a>
+      </div>
+    </PageWrapper>
   );
 }
