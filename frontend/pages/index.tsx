@@ -4,7 +4,7 @@
 import { Heading, Link } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
-import { PageWrapper } from "../components/PageWrapper/PageWrapper";
+
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
   const { locale, locales, defaultLocale } = router;
 
   return (
-    <PageWrapper title="Homepage">
+    <>
       <Heading as="h1" size="2xl" mb="2">
         Welcome to{" "}
         <Link
@@ -60,6 +60,6 @@ export default function Home() {
           <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
         </a>
       </div>
-    </PageWrapper>
+    </>
   );
 }
