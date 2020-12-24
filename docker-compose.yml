@@ -1,13 +1,27 @@
 version: "3.8"
-
 services:
-   frontend:
-    build: ./frontend
+  frontend:
+    stdin_open: true
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
       - 3000:3000
-    stdin_open: true
     volumes:
       - /frontend/node_modules
       - ./frontend:/frontend
     environment:
       - PORT=80
+  backend:
+    stdin_open: true
+    tty: true
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
+    environment:
+      - PORT=3001
+    volumes:
+      - ./backend:/app
+    
