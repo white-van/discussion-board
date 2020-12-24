@@ -1,4 +1,4 @@
-import "./button.css";
+import "./button.module.css";
 
 import { Button as ChakraButton } from "@chakra-ui/react";
 import React from "react";
