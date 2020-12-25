@@ -11,7 +11,6 @@ export const Footer = (): JSX.Element => {
         rel="noopener noreferrer"
       >
         Hello by{" "}
-        <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
       </a>
     </footer>
   );
