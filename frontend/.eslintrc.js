@@ -22,9 +22,6 @@ module.exports = {
     "prettier",
   ],
   rules: {
-    // TODO: This was annoying, maybe we can look into it later
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-
     "no-console": "warn",
     "no-undef": "off", // https://github.com/eslint/typescript-eslint-parser/issues/437
     "no-unused-vars": "warn",
@@ -54,6 +51,7 @@ module.exports = {
           },
         ],
 
+        "@typescript-eslint/unbound-method": "off",
         // Without the following, you will get inconsistent behaviour compared to barebone @typescript-eslint
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "warn",

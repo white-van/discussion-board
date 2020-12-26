@@ -1,16 +1,25 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/unbound-method */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { Heading, Link } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useIntl } from "react-intl";
+import { defineMessages, useIntl } from "react-intl";
 
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
-  const { formatMessage } = useIntl();
-  const f = (id) => formatMessage({ id });
+const messages = defineMessages({
+  hello: {
+    id: "hello",
+    description: "Simple Hello Message",
+    defaultMessage: "Hello World",
+  },
+  welcomeMessage: {
+    id: "welcomeMessage",
+    description: "Welcome Message",
+    defaultMessage: "Welcome",
+  },
+});
+
+export default function Home(): React.ReactNode {
   const router = useRouter();
+  const { formatMessage } = useIntl();
   const { locale, locales, defaultLocale } = router;
 
   return (
@@ -24,8 +33,8 @@ export default function Home() {
           Dialog!
         </Link>
       </Heading>
-      <p>{f("hello")}</p>
-      <p>{f("welcomeMessage")}</p>
+      <p>{formatMessage(messages.hello)}</p>
+      <p>{formatMessage(messages.welcomeMessage)}</p>
       <p>Current locale: {locale}</p>
       <p>Default locale: {defaultLocale}</p>
       <p>Configured locales: {JSON.stringify(locales)}</p>

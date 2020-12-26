@@ -1,7 +1,8 @@
 import React from "react";
+
 import styles from "./Footer.module.css";
 
-export const Footer = () => {
+export const Footer = (): JSX.Element => {
   return (
     <footer className={styles.footer}>
       <a
@@ -10,7 +11,6 @@ export const Footer = () => {
         rel="noopener noreferrer"
       >
         Hello by{" "}
-        <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
       </a>
     </footer>
   );
