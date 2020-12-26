@@ -1,24 +1,25 @@
-name: React
+name: reactci-lint
 
 on:
   push:
-    branches: [ main, develop ]
+    branches:
+      - develop
+      - main
   pull_request:
-    branches: [ main, develop ]
 
 jobs:
-  build:
+  reactci:
+    name: lint
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./frontend
     steps:
-      - name: React Setup
-        uses: actions/setup-node@v1
+      - name: Set up Node 14.x
+      uses: actions/setup-node@v1
         with: 
             node-version: 14.x
-
-      - name: Check out code into the React module directory
-        uses: actions/checkout@v2
-        with:
-          path: frontend
+      
+      - uses: actions/checkout@v2
 
       - name: Install dependencies
         run: npm install
