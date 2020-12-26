@@ -12,4 +12,8 @@ wss:
 build:
 	go build -o bin/pizza httpd/main.go
 
-setup:
+lint: build-lint
+	docker run lint:latest
+
+build-lint:
+	docker build -f Dockerfile.lint . -t lint
