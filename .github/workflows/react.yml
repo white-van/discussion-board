@@ -7,12 +7,14 @@ on:
       - main
   pull_request:
 
+defaults:
+  run:
+    working-directory: frontend
+
 jobs:
   reactci:
     name: lint
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./frontend
     steps:
       - name: Set up Node 14.x
         uses: actions/setup-node@v1
