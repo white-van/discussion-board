@@ -46,8 +46,18 @@ export default function App({
   const router = useRouter();
   const { locale, defaultLocale, pathname } = router;
   const messages = locales[locale];
+  const theme = extendTheme({
+    colors: {
+      brand: {
+        100: "#2d9cdc", // main blue
+        200: "#96cfee", // light blue
+        300: "gray.600", // dark grey text
+        400: "#4e93bb", // dark blue shadow
+      },
+    },
+  });
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <IntlProvider
         locale={locale}
         defaultLocale={defaultLocale}
