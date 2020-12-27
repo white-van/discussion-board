@@ -1,7 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/unbound-method */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import { Box, Heading, Link, SimpleGrid, Text } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { BiPalette } from "react-icons/bi";
+import { FaUniversity } from "react-icons/fa";
 import { ImWrench } from "react-icons/im";
 import { IoAccessibility } from "react-icons/io5";
 import { RiCodeSSlashLine } from "react-icons/ri";
@@ -27,9 +32,10 @@ const messages = defineMessages({
 export default function Home(): React.ReactNode {
   const router = useRouter();
   const { formatMessage } = useIntl();
+  const f = (id) => formatMessage({ id });
   const { locale, locales, defaultLocale } = router;
 
-return (
+  return (
     <div className={styles.container}>
       <Head>
         <title>Homepage</title>
