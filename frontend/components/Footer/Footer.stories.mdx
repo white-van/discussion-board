@@ -11,9 +11,7 @@ markdown documentation.
 export const Template = (args) => <Footer {...args} />;
 
 <Canvas>
-  <Story name="Footer">
-    {Template.bind({})}
-  </Story>
+  <Story name="Footer">{Template.bind({})}</Story>
 </Canvas>
 
 <ArgsTable of={Footer} />
