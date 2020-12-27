@@ -1,7 +1,14 @@
-import { Heading, Link } from "@chakra-ui/react";
+import { Box, Heading, Link, SimpleGrid, Text } from "@chakra-ui/react";
+import Head from "next/head";
 import { useRouter } from "next/router";
+import { BiPalette } from "react-icons/bi";
+import { ImWrench } from "react-icons/im";
+import { IoAccessibility } from "react-icons/io5";
+import { RiCodeSSlashLine } from "react-icons/ri";
+import { RiOpenSourceFill } from "react-icons/ri";
 import { defineMessages, useIntl } from "react-intl";
 
+import { FeatureCard } from "../components/FeatureCard/FeatureCard";
 import styles from "../styles/Home.module.css";
 
 const messages = defineMessages({
@@ -22,8 +29,12 @@ export default function Home(): React.ReactNode {
   const { formatMessage } = useIntl();
   const { locale, locales, defaultLocale } = router;
 
-  return (
-    <>
+return (
+    <div className={styles.container}>
+      <Head>
+        <title>Homepage</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Heading as="h1" size="2xl" mb="2">
         Welcome to{" "}
         <Link
@@ -33,11 +44,58 @@ export default function Home(): React.ReactNode {
           Dialog!
         </Link>
       </Heading>
-      <p>{formatMessage(messages.hello)}</p>
-      <p>{formatMessage(messages.welcomeMessage)}</p>
+      <p>{f("hello")}</p>
+      <p>{f("welcomeMessage")}</p>
       <p>Current locale: {locale}</p>
       <p>Default locale: {defaultLocale}</p>
       <p>Configured locales: {JSON.stringify(locales)}</p>
+
+      <main className={styles.main}>
+        <Box bg="brand.100" w="100%" h="100%" p={10}>
+          <Text fontSize="3xl" align="center" color="white" fontWeight="bold">
+            {f("featuresTitle")}
+          </Text>
+          <br></br>
+          <br></br>
+          <SimpleGrid columns={{ sm: 2, md: 3 }} spacing={14}>
+            <FeatureCard
+              title={f("feature1")}
+              description={f("feature1msg")}
+              icon={BiPalette}
+            />
+
+            <FeatureCard
+              title={f("feature2")}
+              description={f("feature2msg")}
+              icon={ImWrench}
+            />
+
+            <FeatureCard
+              title={f("feature3")}
+              description={f("feature3msg")}
+              icon={FaUniversity}
+            />
+
+            <FeatureCard
+              title={f("feature4")}
+              description={f("feature4msg")}
+              icon={IoAccessibility}
+            />
+
+            <FeatureCard
+              title={f("feature5")}
+              description={f("feature5msg")}
+              icon={RiCodeSSlashLine}
+            />
+
+            <FeatureCard
+              title={f("feature6")}
+              description={f("feature6msg")}
+              icon={RiOpenSourceFill}
+            />
+          </SimpleGrid>
+        </Box>
+      </main>
 
       <div className={styles.grid}>
         <a
@@ -69,6 +127,6 @@ export default function Home(): React.ReactNode {
           <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
         </a>
       </div>
-    </>
+    </div>
   );
 }
