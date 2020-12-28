@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { ChakraProvider } from "@chakra-ui/react";
+import { render } from "@testing-library/react";
+import { RouterContext } from "next/dist/next-server/lib/router-context";
+import { NextRouter } from "next/router";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
@@ -8,11 +11,39 @@ import { Provider } from "react-redux";
 import { locales } from "../content/locale";
 import configureStore from "../stores/store";
 
+const mockRouter: NextRouter = {
+  basePath: "",
+  pathname: "/",
+  route: "/",
+  asPath: "/",
+  query: {},
+  push: jest.fn(),
+  replace: jest.fn(),
+  reload: jest.fn(),
+  back: jest.fn(),
+  prefetch: jest.fn(),
+  beforePopState: jest.fn(),
+  events: {
+    on: jest.fn(),
+    off: jest.fn(),
+    emit: jest.fn(),
+  },
+  isFallback: false,
+};
+
 export const wrapInIntl = (component: React.ReactNode) => (
   <IntlProvider locale="en" defaultLocale="en" messages={locales["en"]}>
     {component}
   </IntlProvider>
 );
+
+export const wrapInRouter = (component: React.ReactNode) => {
+  return (
+    <RouterContext.Provider value={{ ...mockRouter }}>
+      {component}
+    </RouterContext.Provider>
+  );
+};
 
 export const wrapInStore = (component: React.ReactNode) => {
   const store = configureStore({ mocks: {} });
@@ -23,6 +54,6 @@ export const wrapInTheme = (component: React.ReactNode) => {
   return <ChakraProvider>{component}</ChakraProvider>;
 };
 
-export const wrapInAll = (component: React.ReactNode) => {
-  return wrapInTheme(wrapInIntl(wrapInStore(component)));
+export const renderWrapped = (component: React.ReactNode) => {
+  return render(wrapInRouter(wrapInTheme(wrapInIntl(wrapInStore(component)))));
 };
