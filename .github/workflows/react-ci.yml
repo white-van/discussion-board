@@ -1,4 +1,4 @@
-name: reactci-lint
+name: reactci-test
 
 on:
   push:
@@ -13,7 +13,7 @@ defaults:
 
 jobs:
   reactci:
-    name: lint
+    name: test
     runs-on: ubuntu-latest
     steps:
       - name: Set up Node 14.x
@@ -29,5 +29,5 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Run a multi-line script
-        run: npm run lint
+      - name: Run testing suite
+        run: npm run test

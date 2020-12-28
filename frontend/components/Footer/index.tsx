@@ -10,7 +10,7 @@ export const Footer = (): JSX.Element => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Hello by{" "}
+        Hello{" "}
       </a>
     </footer>
   );
