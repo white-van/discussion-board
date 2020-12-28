@@ -1,7 +1,7 @@
 import React from "react";
 
-import { renderWrapped } from "../testing/helpers";
-import Home, { cards } from "./";
+import Home, { cards } from "../../pages";
+import { renderWrapped } from "../helpers";
 
 describe("HomePage", () => {
   it("Renders each card", () => {

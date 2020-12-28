@@ -6,7 +6,7 @@ import {
   patchRequest,
   postRequest,
   serverUrl,
-} from "./";
+} from "../../network";
 
 jest.mock("axios");
 
