@@ -1,0 +1,17 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Footer } from "./index";
+
+<Meta title="Container/Footer" component={Footer} />
+
+# Footer
+
+With `MDX` we can define a story for `Footer` right in the middle of our
+markdown documentation.
+
+export const Template = (args) => <Footer {...args} />;
+
+<Canvas>
+  <Story name="Footer">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable of={Footer} />

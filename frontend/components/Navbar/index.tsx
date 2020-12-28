@@ -1,6 +1,6 @@
 import {
-  Button,
   Box,
+  Button,
   Flex,
   Heading,
   Spacer,
@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-export const Navbar = () => {
+export const Navbar = (): JSX.Element => {
   const { toggleColorMode } = useColorMode();
 
   return (
