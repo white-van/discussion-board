@@ -49,7 +49,7 @@ export interface CardProps {
   msg: string;
 }
 
-export const Card: React.RC<CardProps> = ({ url, title, msg }: CardProps) => {
+export const Card: React.FC<CardProps> = ({ url, title, msg }: CardProps) => {
   return (
     <a href={url} className={styles.card}>
       <h3>{title} &rarr;</h3>
@@ -58,7 +58,7 @@ export const Card: React.RC<CardProps> = ({ url, title, msg }: CardProps) => {
   );
 };
 
-export default function Home(): React.ReactNode {
+export default function Home(): JSX.Element {
   const router = useRouter();
   const { formatMessage } = useIntl();
   const { locale, locales, defaultLocale } = router;
