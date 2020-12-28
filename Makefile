@@ -9,3 +9,4 @@ down :
 
 prettier :
 	cd frontend && npx prettier --write .
+	cd frontend && npm run lint -- --fix
