@@ -52,7 +52,7 @@ export interface CardProps {
 export const Card: React.FC<CardProps> = ({ url, title, msg }: CardProps) => {
   return (
     <a href={url} className={styles.card}>
-      <h3>{title} &rarr;</h3>
+      <h2>{title} &rarr;</h2>
       <p>{msg}</p>
     </a>
   );
