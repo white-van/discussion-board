@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
-    "test": "jest --watchAll",
+    "test": "jest",
     "lint": "eslint . --ext .tsx",
     "build-storybook": "build-storybook"
   },
