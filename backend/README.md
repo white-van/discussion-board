@@ -82,3 +82,8 @@ specificUserRouter := router.Group("/user/:uid"){
     // and is used for archiving a course in the db, we require the cid for looking up the course in the db, and we can just update the isarc value to be true
 
 }
+
+### CORS
+
+Currently we have given access to http://localhost:3000 as an origin source for making calls to the backend. Wehn pushing the app
+to production, this should be changed to the url of the frontend.
