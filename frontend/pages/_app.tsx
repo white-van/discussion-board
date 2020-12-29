@@ -6,6 +6,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
+
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import { locales } from "../content/locale";
