@@ -25,7 +25,11 @@ export const Navbar = (): JSX.Element => {
         <Button mr="4" size="sm">
           Login
         </Button>
-        <Switch color="gray" onChange={() => toggleColorMode()} />
+        <Switch
+          aria-label="darkmode-switch"
+          color="gray"
+          onChange={() => toggleColorMode()}
+        />
       </Box>
     </Flex>
   );
