@@ -40,14 +40,34 @@
 
 ## 💡 Contributing
 
-discussion-board follows Gitflow
+Dialog follows Gitflow. We practice CI/CD where we continuously deploy off of main and use develop for feature work.
 
+```
+──────────────────────── main ────────────────────────────────────    # Deployments
+        │                                   │
+        └───────────── develop ─────────────                          # Development work
+            │                           │
+            └───────── DEV-XXX ─────────                              # Feature branches
+```
+
+For internal team:
+1. Clone the repo
+2. See featurework
+
+For open source contributors:
 1. Fork the repo
 2. `git remote add upstream https://github.com/white-van/discussion-board/`
 3. `git fetch upstream`
-4. `git rebase upstream/main`
-5. `git checkout -b develop`
-6. `git rebase upstream/develop`
+4. `git rebase upstream/develop`
+5. See featurework
+
+Frontend Acceptance Criteria:
+1. It should be properly linted/formatted (run `make prettier`)
+2. Adequate automated test coverage
+3. Basic manual QA & accessibility checks with Axe
+
+Backend Acceptance Criteria:
+WIP
 
 ### ⛏️ Featurework:
 
@@ -78,4 +98,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [issues-shield]: https://img.shields.io/github/issues/white-van/discussion-board
 [issues-url]: https://github.com/white-van/discussion-board/issues
 [license-shield]: https://img.shields.io/github/license/white-van/discussion-board
-[license-url]: https://github.com/white-van/discussion-board/blob/master/LICENSE
+[license-url]: https://github.com/white-van/discussion-board/blob/main/LICENSE
