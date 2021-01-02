@@ -1,4 +1,7 @@
 {
   "hello": "Hello, world!",
-  "welcomeMessage": "Welcome to your internationalised page!"
+  "welcomeMessage": "Welcome to your internationalised page!",
+  "heroHeading": "Communicate with students online, <span>seamlessly</span>",
+  "heroText": "Dialog is the best way to encourage discussion, promote engagement, and provide resources to students in an online format!",
+  "getStartedBtn": "Get Started"
 }

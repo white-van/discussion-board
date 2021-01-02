@@ -11,6 +11,7 @@ import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import { locales } from "../content/locale";
 import configureStore from "../stores/store";
+import theme from "../theme/theme";
 
 interface PageWrapperProps {
   children: React.ReactNode;
@@ -47,7 +48,7 @@ export default function App({
   const { locale, defaultLocale, pathname } = router;
   const messages = locales[locale];
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <IntlProvider
         locale={locale}
         defaultLocale={defaultLocale}

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { defineMessages, useIntl } from "react-intl";
 
+import { HeroSection } from "../components/HeroSection/HeroSection";
 import styles from "../styles/Home.module.css";
 
 const messages = defineMessages({
@@ -92,6 +93,8 @@ export default function Home(): JSX.Element {
           );
         })}
       </div>
+
+      <HeroSection />
     </>
   );
 }
