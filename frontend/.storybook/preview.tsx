@@ -8,6 +8,7 @@ import {
 import * as React from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import theme from "../theme/theme";
+import { IntlProvider } from "react-intl";
 
 const ColorModeToggleBar = () => {
   const { toggleColorMode } = useColorMode();
@@ -33,7 +34,9 @@ const ColorModeToggleBar = () => {
 const withChakra = (StoryFn: Function) => (
   <ChakraProvider theme={theme}>
     <ColorModeToggleBar />
-    <StoryFn />
+    <IntlProvider locale="en">
+      <StoryFn />
+    </IntlProvider>
   </ChakraProvider>
 );
 
