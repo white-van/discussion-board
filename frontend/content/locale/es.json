@@ -1,4 +1,6 @@
 {
   "hello": "¡Hola Mundo!",
-  "welcomeMessage": "¡Bienvenido a tu página internacionalizada!"
+  "welcomeMessage": "¡Bienvenido a tu página internacionalizada!",
+  "heroHeading": "ES-heroHeading",
+  "heroText": "ES-heroText"
 }

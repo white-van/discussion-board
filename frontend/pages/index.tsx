@@ -1,4 +1,12 @@
-import { Heading, Link } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Link,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 import { defineMessages, useIntl } from "react-intl";
@@ -92,6 +100,31 @@ export default function Home(): JSX.Element {
           );
         })}
       </div>
+
+      <Flex direction="column" align="center" width="lg">
+        <Heading mb={2} align="center" colorScheme="gray">
+          {formatMessage(
+            { id: "heroHeading" },
+            {
+              span: function renderSpan(...parts) {
+                return (
+                  <Box as="span" color="blue.500">
+                    {parts.join("")}
+                  </Box>
+                );
+              },
+            }
+          )}
+        </Heading>
+        <Text
+          mb={8}
+          align="center"
+          color={useColorModeValue("gray.600", "gray.400")}
+        >
+          {formatMessage({ id: "heroText" })}
+        </Text>
+        <Button colorScheme="blue">Get Started</Button>
+      </Flex>
     </>
   );
 }
