@@ -1,16 +1,9 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Link,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Heading, Link } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 import { defineMessages, useIntl } from "react-intl";
 
+import { HeroSection } from "../components/HeroSection/HeroSection";
 import styles from "../styles/Home.module.css";
 
 const messages = defineMessages({
@@ -101,30 +94,7 @@ export default function Home(): JSX.Element {
         })}
       </div>
 
-      <Flex direction="column" align="center" width="lg">
-        <Heading mb={2} align="center" colorScheme="gray">
-          {formatMessage(
-            { id: "heroHeading" },
-            {
-              span: function renderSpan(...parts) {
-                return (
-                  <Box as="span" color="blue.500">
-                    {parts.join("")}
-                  </Box>
-                );
-              },
-            }
-          )}
-        </Heading>
-        <Text
-          mb={8}
-          align="center"
-          color={useColorModeValue("gray.600", "gray.400")}
-        >
-          {formatMessage({ id: "heroText" })}
-        </Text>
-        <Button colorScheme="blue">Get Started</Button>
-      </Flex>
+      <HeroSection />
     </>
   );
 }
