@@ -74,9 +74,9 @@ WIP
 1. `git checkout -b DEV-000` (where 000 corresponds to the issue number)
 2. Write your code
 3. Open a PR from that branch to develop (in the main repo)
-5. Fill out the pull request template accordingly
-6. To be approved, code must have adequate test coverage + formatted properly
-- Check frontend formatting with `npm run lint` and `make prettier`
+4. Fill out the pull request template accordingly
+5. To be approved, code must have adequate test coverage + formatted properly
+6. Check frontend formatting with `npm run lint` and `make prettier`
 7. Commits should be squashed
 
 ## 🚀 Local Development
