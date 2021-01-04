@@ -1,5 +1,15 @@
 version: "3.8"
 services:
+  postgres:
+    build:
+      context: ./storage
+      dockerfile: Dockerfile.db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
   frontend:
     stdin_open: true
     build:
@@ -24,4 +34,8 @@ services:
       - PORT=3001
     volumes:
       - ./backend:/app
+    links:
+      - postgres
+    depends_on: 
+      - postgres
     

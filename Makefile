@@ -1,20 +1,20 @@
-build :
+build:
 ifeq ($(env), local)
 	cd frontend && npm install
 else
 	docker-compose up --build
 endif
 
-run :
+run:
 ifeq ($(env), local)
 	cd frontend && npm run dev
 else
 	docker-compose up
 endif
 
-down :
+down:
 	docker-compose down --remove-orphans
 
-prettier :
+prettier:
 	cd frontend && npx prettier --write .
 	cd frontend && npm run lint -- --fix
