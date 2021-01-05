@@ -1,0 +1,9 @@
+.contributors {
+  width: 100vw;
+  background: rgb(45, 156, 219);
+  background: linear-gradient(
+    0,
+    rgba(45, 156, 219, 1) 0%,
+    rgba(247, 250, 252, 1) 100%
+  );
+}

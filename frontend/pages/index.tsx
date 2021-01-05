@@ -4,6 +4,7 @@
 import { Heading, Link } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
+import { Contributors } from "../components/Contributors";
 
 import styles from "../styles/Home.module.css";
 
@@ -60,6 +61,7 @@ export default function Home() {
           <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
         </a>
       </div>
+      <Contributors />
     </>
   );
 }
