@@ -1,8 +1,13 @@
-import { getRequest } from "../../network";
 import axios from "axios";
 
-export async function getContributors() {
-  const response = await axios.get(
+export interface ContributorProps {
+  login: string;
+  avatar_url: string;
+  html_url: string;
+}
+
+export async function getContributors(): Promise<ContributorProps[]> {
+  const response = await axios.get<ContributorProps[]>(
     "https://api.github.com/repos/white-van/discussion-board/contributors",
     {
       headers: {

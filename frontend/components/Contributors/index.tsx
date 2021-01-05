@@ -1,34 +1,26 @@
 import {
+  Avatar,
+  Box,
   Center,
   Grid,
   GridItem,
-  Text,
   Heading,
-  HStack,
-  VStack,
-  Avatar,
-  Box,
   Link,
   SimpleGrid,
+  Text,
   useBreakpointValue,
+  VStack,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { Url } from "url";
-import { getContributors } from "../../requests/github";
+
+import { ContributorProps, getContributors } from "../../requests/github";
 import styles from "./contributors.module.css";
 
-export interface ContributorIconProps {
-  username: string;
-  avatar_url: string;
-  html_url: string;
-}
-
-const ContributorIcon: React.FC<ContributorIconProps> = ({
-  username,
+const ContributorIcon: React.FC<ContributorProps> = ({
+  login,
   avatar_url,
   html_url,
-  ...props
-}: ContributorIconProps) => {
+}: ContributorProps) => {
   return (
     <Link isExternal href={html_url}>
       <Box
@@ -39,23 +31,25 @@ const ContributorIcon: React.FC<ContributorIconProps> = ({
         w="110px"
         h="150px"
       >
-        <Avatar size="xl" name={username} src={avatar_url} />
+        <Avatar size="xl" name={login} src={avatar_url} />
         <br />
-        <Text fontSize="sm">@{username}</Text>
+        <Text fontSize="sm">@{login}</Text>
       </Box>
     </Link>
   );
 };
 
-export const Contributors = () => {
-  const [contributorsList, setContributorsList] = useState([]);
+export const Contributors = (): JSX.Element => {
+  const [contributorsList, setContributorsList] = useState<ContributorProps[]>(
+    []
+  );
   const height = useBreakpointValue({ xs: null, sm: "100vh" });
-
   useEffect(() => {
-    async function retrieveContributors() {
+    async function retrieveContributors(): Promise<void> {
       const response = await getContributors();
       setContributorsList(response);
     }
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     retrieveContributors();
   }, []);
 
@@ -101,7 +95,7 @@ export const Contributors = () => {
               return (
                 <GridItem margin="auto" key={index}>
                   <ContributorIcon
-                    username={contributor.login}
+                    login={contributor.login}
                     avatar_url={contributor.avatar_url}
                     html_url={contributor.html_url}
                   />

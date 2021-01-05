@@ -1,22 +1,26 @@
-// TODO: FIX THESE ESLINT ERROR
-/* eslint-disable react/prop-types */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import "../styles/globals.css";
 
 import { ChakraProvider } from "@chakra-ui/react";
+import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
 
-import { Footer } from "../components/Footer/Footer";
-import { Navbar } from "../components/Navbar/Navbar";
-import * as locales from "../content/locale";
+import { Footer } from "../components/Footer";
+import { Navbar } from "../components/Navbar";
+import { locales } from "../content/locale";
 import configureStore from "../stores/store";
+import theme from "../theme/theme";
 
-export const PageWrapper = ({ children, title }) => {
+interface PageWrapperProps {
+  children: React.ReactNode;
+  title: string;
+}
+export const PageWrapper: React.FC<PageWrapperProps> = ({
+  children,
+  title,
+}: PageWrapperProps) => {
   return (
     <div className="container">
       <Head>
@@ -30,17 +34,21 @@ export const PageWrapper = ({ children, title }) => {
   );
 };
 
-export default function App({ Component, pageProps }) {
+const messagesMap: { [pathname: string]: string } = {
+  "/": "Homepage",
+};
+
+export default function App({
+  Component,
+  pageProps,
+}: AppProps): React.ReactNode {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const store = configureStore(pageProps.initialReduxState);
   const router = useRouter();
   const { locale, defaultLocale, pathname } = router;
   const messages = locales[locale];
-
-  const messagesMap = {
-    "/": "Homepage",
-  };
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <IntlProvider
         locale={locale}
         defaultLocale={defaultLocale}
