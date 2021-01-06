@@ -32,6 +32,8 @@ CREATE TABLE courses (
   course_id SERIAL PRIMARY KEY,
   course_name varchar(100),
   course_code varchar(50) NOT NULL,
+  course_password varchar(50) NOT NULL,
+  closing_at timestamp with time zone, 
   semester_id int REFERENCES semesters (semester_id) ON DELETE CASCADE,
   is_archived boolean DEFAULT false
 );
