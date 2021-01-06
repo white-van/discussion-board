@@ -19,7 +19,8 @@ export const Navbar = (): JSX.Element => {
 
   const textColor = useColorModeValue("white", "white");
   const boxBg = useColorModeValue("#343A40", "#343A40");
-  const buttonBg = useColorModeValue("#2D9CDB", "blue");
+  const buttonBg = useColorModeValue("#2D9CDB", "#2D9CDB");
+  const iconColor = useColorModeValue("#ECC94B", "light");
 
   return (
     <Flex w="101%" mb="4" bg={boxBg} boxShadow="lg">
@@ -42,7 +43,7 @@ export const Navbar = (): JSX.Element => {
           color="current"
           margin="1"
           onClick={toggleColorMode}
-          icon={<SwitchIcon />}
+          icon={<SwitchIcon color={iconColor} />}
         />
       </Box>
     </Flex>
