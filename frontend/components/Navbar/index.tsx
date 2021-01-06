@@ -17,20 +17,21 @@ export const Navbar = (): JSX.Element => {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const nextMode = useColorModeValue("dark", "light");
 
-  const titleColor = useColorModeValue("white", "white");
-  const boxColor = useColorModeValue("#343A40", "#343A40");
+  const textColor = useColorModeValue("white", "white");
+  const boxBg = useColorModeValue("#343A40", "#343A40");
+  const buttonBg = useColorModeValue("#2D9CDB", "blue");
 
   return (
-    <Flex w="101%" mb="4" bg={boxColor} boxShadow="lg">
-      <Box m="4" color={titleColor}>
+    <Flex w="101%" mb="4" bg={boxBg} boxShadow="lg">
+      <Box m="4" color={textColor}>
         <Heading size="md">Dialog</Heading>
       </Box>
       <Spacer />
       <Box m="1">
-        <Button m="1" size="sm" colorScheme="blue">
+        <Button m="1" size="sm" bg={buttonBg} color={textColor}>
           Sign Up
         </Button>
-        <Button m="1" size="sm" colorScheme="blue">
+        <Button m="1" size="sm" bg={buttonBg} color={textColor}>
           Login
         </Button>
         <IconButton
