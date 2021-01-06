@@ -53,7 +53,6 @@ CREATE TABLE categories (
 
 CREATE TABLE thread (
   thread_id SERIAL PRIMARY KEY,
-  author int REFERENCES users (user_id) ON DELETE CASCADE,
   parent_id int REFERENCES thread (thread_id) ON DELETE CASCADE,
   num_children int DEFAULT 0 NOT NULL,
   course_id int REFERENCES courses (course_id) ON DELETE CASCADE,
@@ -66,6 +65,12 @@ CREATE TABLE thread (
   updated_at timestamp with time zone DEFAULT (now()),
   is_locked boolean DEFAULT false,
   is_anon boolean DEFAULT false
+);
+
+CREATE TABLE authors (
+  user_id int REFERENCES users (user_id) ON DELETE CASCADE,
+  thread_id int REFERENCES thread (thread_id) ON DELETE CASCADE,
+  PRIMARY KEY (user_id, thread_id)
 );
 
 CREATE TABLE note (
