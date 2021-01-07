@@ -16,6 +16,8 @@ a {
 }
 
 .container {
+  overflow-x: hidden;
+  overflow-y: hidden;
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;

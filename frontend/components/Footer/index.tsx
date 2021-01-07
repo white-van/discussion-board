@@ -1,62 +1,60 @@
 import {
-  Box,
-  Button,
   Center,
   Flex,
-  Grid,
   GridItem,
   Heading,
-  IconButton,
-  Spacer,
+  HStack,
+  SimpleGrid,
   Text,
-  useColorMode,
-  useColorModeValue,
+  useBreakpointValue,
 } from "@chakra-ui/react";
-
 import React from "react";
 
 import styles from "./Footer.module.css";
 
+export const footerLinks = [
+  "Terms",
+  "Privacy",
+  "Help",
+  "API",
+  "Status",
+  "Blog",
+];
+
 export const Footer = (): JSX.Element => {
+  const verticalOffset = useBreakpointValue({ sm: "", md: "6" });
+  const spacing = useBreakpointValue({ xs: 6, sm: 14 });
+
   return (
-    <footer className={styles.footer} bg="#343A40">
-      <Center mx="15">
-        <Grid templateColumns="repeat(8, 1fr)" gap={14}>
-          <GridItem colSpan={2}>
-            <Text align="center" m="4">
-              <Heading size="sm" color="gray.500">© 2020 White Van, Inc.</Heading>
-              <Text fontSize="xs" color="white">made with ❤ 
-              by pizza van</Text>
+    <Flex className={styles.footer}>
+      <Center>
+        <SimpleGrid columns={[1, 1, 2]}>
+          <GridItem align="center" m="4">
+            <Heading size="sm" color="gray.500">
+              © 2020 White Van, Inc.
+            </Heading>
+            <Text fontSize="xs" color="white">
+              made with ❤ by pizza van
             </Text>
           </GridItem>
-          <Heading align="center"pt="6" fontSize="sm" color="blue.600" >
-            Terms
-          </Heading>
-          <Heading align="center" pt="6" fontSize="sm" color="blue.600">
-            Privacy
-          </Heading>
-          <Heading align="center" pt="6" fontSize="sm" color="blue.600">
-            Help
-          </Heading>
-          <Heading align="center" pt="6" fontSize="sm" color="blue.600">
-            API
-          </Heading>
-          <Heading align="center" pt="6" fontSize="sm" color="blue.600">
-            Status
-          </Heading>
-          <Heading align="center" pt="6" fontSize="sm" color="blue.600" >
-            Blog
-          </Heading>
-        </Grid>
+          <GridItem>
+            <HStack pt={verticalOffset} spacing={spacing}>
+              {footerLinks.map((link, index) => {
+                return (
+                  <Heading
+                    key={index}
+                    align="center"
+                    fontSize="sm"
+                    color="blue.600"
+                  >
+                    {link}
+                  </Heading>
+                );
+              })}
+            </HStack>
+          </GridItem>
+        </SimpleGrid>
       </Center>
-
-      {/* <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        
-      </a> */}
-    </footer>
+    </Flex>
   );
 };
