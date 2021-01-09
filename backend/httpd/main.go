@@ -5,6 +5,8 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+
+	"pizza/database"
 )
 
 func main() {
@@ -35,6 +37,9 @@ func main() {
 			"message": "pong",
 		})
 	})
+
+	db := database.Connect()
+	defer db.Close()
 
 	err := r.Run() // listen and serve on 0.0.0.0:3001 (for windows "localhost:3001")
 	if err != nil {

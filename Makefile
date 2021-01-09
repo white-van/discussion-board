@@ -18,3 +18,6 @@ down:
 prettier:
 	cd frontend && npx prettier --write .
 	cd frontend && npm run lint -- --fix
+
+generate:
+	cd backend/gen && python3 generate.py

@@ -1,0 +1,38 @@
+tables:
+  - name: User
+    fields:
+      - name: ID
+        type: int
+      - name: FirstName
+        type: string
+        length: 255
+      - name: LastName
+        type: string
+        length: 255
+      - name: PreferredName
+        type: string
+        length: 255
+      - name: Email
+        type: string
+        length: 255
+        unique: True
+        notnull: True
+  - name: Institution
+    fields:
+      - name: ID
+        type: int
+      - name: Name
+        type: string
+        length: 255
+      - name: Location
+        type: string
+        length: 255
+        notnull: True
+  - name: Administrator
+    fields:
+      - name: User
+        type: User
+        rel: has-one
+      - name: Institution
+        type: Institution
+        rel: has-one
