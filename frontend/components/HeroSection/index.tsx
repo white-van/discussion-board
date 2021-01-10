@@ -34,7 +34,7 @@ export const HeroSection = (): JSX.Element => {
 
   return (
     <Flex direction="column" align="center" width="lg">
-      <Heading mb={2} align="center" colorScheme="gray">
+      <Heading as="h1" mb={2} colorScheme="gray" textAlign="center">
         {formatMessage(messages.heroHeading, {
           span: function renderSpan(...parts) {
             return (

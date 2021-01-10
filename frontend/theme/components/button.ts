@@ -10,6 +10,13 @@ export default {
       bg: "#90cdf4",
       color: "#1a202c",
     },
+    secondary: {
+      bg: "#343A40",
+    },
+    secondaryDark: {
+      bg: "#90cdf4",
+      color: "#1a202c",
+    },
   },
   defaultProps: {
     size: "md",

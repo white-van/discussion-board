@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
-import theme from "../theme/theme";
+import theme from "../theme";
 import { IntlProvider } from "react-intl";
 
 const ColorModeToggleBar = () => {
