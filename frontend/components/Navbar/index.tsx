@@ -23,10 +23,18 @@ export const Navbar = (): JSX.Element => {
       </Box>
       <Spacer />
       <Box>
-        <Button m="1" size="sm">
+        <Button
+          m="1"
+          size="sm"
+          variant={useColorModeValue("primary", "primaryDark")}
+        >
           Sign Up
         </Button>
-        <Button m="1" size="sm">
+        <Button
+          m="1"
+          size="sm"
+          variant={useColorModeValue("primary", "primaryDark")}
+        >
           Login
         </Button>
         <IconButton
