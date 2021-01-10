@@ -33,12 +33,15 @@ export const HeroSection = (): JSX.Element => {
   const { formatMessage } = useIntl();
 
   return (
-    <Flex direction="column" align="center" width="lg" height="100vw">
+    <Flex direction="column" align="center" width="lg">
       <Heading mb={2} align="center" colorScheme="gray">
         {formatMessage(messages.heroHeading, {
           span: function renderSpan(...parts) {
             return (
-              <Box as="span" color="blue.500">
+              <Box
+                as="span"
+                color={useColorModeValue("primary.light", "primary.dark")}
+              >
                 {parts.join("")}
               </Box>
             );
@@ -52,7 +55,7 @@ export const HeroSection = (): JSX.Element => {
       >
         {formatMessage(messages.heroText)}
       </Text>
-      <Button colorScheme="blue">
+      <Button variant={useColorModeValue("primary", "primaryDark")}>
         {formatMessage(messages.getStartedBtn)}
       </Button>
     </Flex>

@@ -11,7 +11,7 @@ import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import { locales } from "../content/locale";
 import configureStore from "../stores/store";
-import theme from "../theme/theme";
+import theme from "../theme";
 
 interface PageWrapperProps {
   children: React.ReactNode;

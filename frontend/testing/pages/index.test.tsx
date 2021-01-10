@@ -1,7 +1,7 @@
 import { axe, toHaveNoViolations } from "jest-axe";
 import React from "react";
 
-import Home, { cards } from "../../pages";
+import Home from "../../pages";
 import { renderWrapped } from "../helpers";
 
 describe("HomePage", () => {
@@ -11,12 +11,5 @@ describe("HomePage", () => {
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
-  });
-
-  it("Renders each card", () => {
-    const { getByText } = renderWrapped(<Home />);
-    cards.forEach((card) => {
-      expect(getByText(card.msg)).toBeInTheDocument();
-    });
   });
 });
