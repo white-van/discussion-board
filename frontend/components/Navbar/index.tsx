@@ -7,6 +7,7 @@ import {
   Spacer,
   useColorMode,
   useColorModeValue,
+  LightMode,
 } from "@chakra-ui/react";
 import React from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -16,17 +17,22 @@ export const Navbar = (): JSX.Element => {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const nextMode = useColorModeValue("dark", "light");
 
+  const textColor = useColorModeValue("white", "white");
+  const boxBg = useColorModeValue("#343A40", "#343A40");
+  const buttonBg = useColorModeValue("#2D9CDB", "#2D9CDB");
+  const iconColor = useColorModeValue("#ECC94B", "light");
+
   return (
-    <Flex w="100%" m="2" mb="4">
-      <Box m="2">
+    <Flex w="101%" mb="4" bg={boxBg} boxShadow="lg">
+      <Box m="4" color={textColor}>
         <Heading size="md">Dialog</Heading>
       </Box>
       <Spacer />
-      <Box>
-        <Button m="1" size="sm">
+      <Box m="1">
+        <Button m="1" size="sm" bg={buttonBg} color={textColor}>
           Sign Up
         </Button>
-        <Button m="1" size="sm">
+        <Button m="1" size="sm" bg={buttonBg} color={textColor}>
           Login
         </Button>
         <IconButton
@@ -37,7 +43,7 @@ export const Navbar = (): JSX.Element => {
           color="current"
           margin="1"
           onClick={toggleColorMode}
-          icon={<SwitchIcon />}
+          icon={<SwitchIcon color={iconColor} />}
         />
       </Box>
     </Flex>
