@@ -1,6 +1,7 @@
 package main
 
 import (
+	"pizza/database"
 	"regexp"
 
 	"github.com/gin-contrib/cors"
@@ -30,6 +31,11 @@ func main() {
 			return matched
 		},
 	}))
+
+	db := database.Connect()
+	defer db.Close()
+	database.CreateSchema(db)
+
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
