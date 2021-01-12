@@ -12,6 +12,9 @@ else
 	docker-compose up
 endif
 
+test:
+	cd frontend && npm run test
+
 down:
 	docker-compose down --remove-orphans
 

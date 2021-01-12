@@ -1,0 +1,15 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs/blocks";
+import { Playground } from "./Playground";
+
+<Meta title="Theming/Library" />
+
+export const Template = (args) => <Playground {...args} />;
+
+<Canvas>
+  <Story name="primary" args={{ theme: "primary" }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="secondary" args={{ theme: "secondary" }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

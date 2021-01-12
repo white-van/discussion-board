@@ -1,4 +1,4 @@
-name: reactci-test
+name: test
 
 on:
   push:
@@ -25,6 +25,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Build Storybook
+        run: npm run build-storybook
 
       - name: Build
         run: npm run build

@@ -94,7 +94,7 @@ export const Contributors = (): JSX.Element => {
             {contributorsList.map((contributor, index) => {
               return (
                 <GridItem margin="auto" key={index}>
-                  <ContributorIcon
+                <ContributorIcon
                     login={contributor.login}
                     avatar_url={contributor.avatar_url}
                     html_url={contributor.html_url}
