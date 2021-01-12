@@ -1,22 +1,27 @@
-import { render } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import React from "react";
+
 import { Contributors } from "../../components/Contributors";
-import { setupTests } from "../helpers";
+import { locales } from "../../content/locale";
+import { renderWrapped, setupTests } from "../helpers";
 
 setupTests();
 
 describe("Contributors", () => {
   expect.extend(toHaveNoViolations);
   it("Check axe violations", async () => {
-    const { container } = render(<Contributors />);
+    const { container } = renderWrapped(<Contributors />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
   it("Basic render functionality", () => {
-    const { queryByText } = render(<Contributors />);
-    expect(queryByText("Hello")).toBeInTheDocument();
+    const { queryByText } = renderWrapped(<Contributors />);
+    expect(queryByText(locales.en.contributorsHeading)).toBeInTheDocument();
   });
+
+  // makes a call to github api on mount
+  // mock contributors and see that it renders each one
+  // basic render functionality: check that the header renders
 });

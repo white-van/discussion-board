@@ -1,5 +1,7 @@
 {
   "heroHeading": "ES-heroHeading",
   "heroText": "ES-heroText",
-  "getStartedBtn": "ES-getStartedBtn"
+  "getStartedBtn": "ES-getStartedBtn",
+  "contributorsHeading": "ES-contributorsHeading",
+  "contributorsText": "ES-contributorsText"
 }

@@ -12,9 +12,24 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { defineMessages, useIntl } from "react-intl";
 
+import { locales } from "../../content/locale";
 import { ContributorProps, getContributors } from "../../requests/github";
 import styles from "./contributors.module.css";
+
+const messages = defineMessages({
+  contributorsHeading: {
+    id: "contributorsHeading",
+    description: "Contributors Heading",
+    defaultMessage: locales.en.contributorsHeading,
+  },
+  contributorsText: {
+    id: "contributorsText",
+    description: "Contributors Message",
+    defaultMessage: locales.en.contributorsText,
+  },
+});
 
 const ContributorIcon: React.FC<ContributorProps> = ({
   login,
@@ -40,6 +55,7 @@ const ContributorIcon: React.FC<ContributorProps> = ({
 };
 
 export const Contributors = (): JSX.Element => {
+  const { formatMessage } = useIntl();
   const [contributorsList, setContributorsList] = useState<ContributorProps[]>(
     []
   );
@@ -64,16 +80,14 @@ export const Contributors = (): JSX.Element => {
         <GridItem>
           <Center>
             <Heading w="70%" textAlign={["center"]}>
-              Built by students — for students
+              {formatMessage(messages.contributorsHeading)}
             </Heading>
           </Center>
         </GridItem>
         <GridItem>
           <Center>
             <Text w={["100%", "70%"]} textAlign={["center"]}>
-              Dialog was developed by University of Toronto students & TAs with
-              the goal of creating an effective & easy to use online platform
-              for student discussion
+              {formatMessage(messages.contributorsText)}
             </Text>
           </Center>
         </GridItem>
@@ -94,7 +108,7 @@ export const Contributors = (): JSX.Element => {
             {contributorsList.map((contributor, index) => {
               return (
                 <GridItem margin="auto" key={index}>
-                <ContributorIcon
+                  <ContributorIcon
                     login={contributor.login}
                     avatar_url={contributor.avatar_url}
                     html_url={contributor.html_url}
