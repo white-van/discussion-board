@@ -13,7 +13,7 @@ defaults:
 
 jobs:
   reactci:
-    name: lint
+    name: reactci-lint
     runs-on: ubuntu-latest
     steps:
       - name: Set up Node 14.x
@@ -29,5 +29,5 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Run a multi-line script
+      - name: Run linter
         run: npm run lint

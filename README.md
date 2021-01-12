@@ -1,10 +1,16 @@
-# discussion-board
+# 🧐 discussion-board
 
-## Project Structure
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
+## 📁 Project Structure
 
 ```text
 .
-├── backend                         # WIP
+├── backend
 |   |── httpd
 |   |   └── main.go                 # Contains the api routes for communication between the front and backend
 |   |── scripts
@@ -32,20 +38,64 @@
 └── README.md                       # You are here! :)
 ```
 
-## Contributing
+## 💡 Contributing
 
-discussion-board follows Gitflow
+Dialog follows Gitflow. We practice CI/CD where we continuously deploy off of main and use develop for feature work.
 
+```
+──────────────────────── main ────────────────────────────────────    # Deployments
+        │                                   │
+        └───────────── develop ─────────────                          # Development work
+            │                           │
+            └───────── DEV-XXX ─────────                              # Feature branches
+```
+
+For internal team:
+1. Clone the repo
+2. See featurework
+
+For open source contributors:
 1. Fork the repo
-2. Make a branch in your fork, named DEV-XXX (where XXX corresponds to the issue number)
-3. Write your code
-4. Open a PR from that branch to master (in the main repo)
-5. Fill out the pull request template accordingly
-6. If working on frontend: run `make prettier`
-7. To be approved, code must have adequate test coverage + formatted properly
+2. `git remote add upstream https://github.com/white-van/discussion-board/`
+3. `git fetch upstream`
+4. `git rebase upstream/develop`
+5. See featurework
 
-## Local Development
+Frontend Acceptance Criteria:
+1. It should be properly linted/formatted (run `make prettier`)
+2. Adequate automated test coverage
+3. Basic manual QA & accessibility checks with Axe
+
+Backend Acceptance Criteria:
+WIP
+
+### ⛏️ Featurework:
+
+1. `git checkout -b DEV-000` (where 000 corresponds to the issue number)
+2. Write your code
+3. Open a PR from that branch to develop (in the main repo)
+4. Fill out the pull request template accordingly
+5. To be approved, code must have adequate test coverage + formatted properly
+6. Check frontend formatting with `npm run lint` and `make prettier`
+7. Commits should be squashed
+
+## 🚀 Local Development
 
 1. Download Docker
 2. `cd frontend && npm install`
 3. `make run`
+
+## 🏁 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+[contributors-shield]: https://img.shields.io/github/contributors/white-van/discussion-board
+[contributors-url]: https://github.com/white-van/discussion-board/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/white-van/discussion-board
+[forks-url]: https://github.com/white-van/discussion-board/network/members
+[stars-shield]: https://img.shields.io/github/stars/white-van/discussion-board
+[stars-url]: https://github.com/white-van/discussion-board/stargazers
+[issues-shield]: https://img.shields.io/github/issues/white-van/discussion-board
+[issues-url]: https://github.com/white-van/discussion-board/issues
+[license-shield]: https://img.shields.io/github/license/white-van/discussion-board
+[license-url]: https://github.com/white-van/discussion-board/blob/main/LICENSE

@@ -1,22 +1,21 @@
 {
-  "hello": "Hello, world!",
-  "welcomeMessage": "Welcome to your internationalised page!",
-  "hello": "Hello, world!",
-  "welcomeMessage": "Welcome to your internationalised page!",
-  "featuresTitle": "Engineered for student success",
+  "featuresHeading": "Engineered for student success",
   "feature1": "Well-designed",
-  "feature1msg": "Designed to be visually appealing with usability in mind",
+  "featureMsg1": "Designed to be visually appealing with usability in mind",
   "feature2": "Moderation",
-  "feature2msg":
+  "featureMsg2":
     "Built with all the tools you need to ensure responsible usage",
   "feature3": "UofT Support",
-  "feature3msg":
+  "featureMsg3":
     "Integrated with Quercus & Shibboleth for a seamless instructor experience",
   "feature4": "Accessible",
-  "feature4msg":
+  "featureMsg4":
     "Follows WAI-ARIA principles, enables students with disabilties",
   "feature5": "LaTeX/Markdown",
-  "feature5msg": "Communicating math concepts is hard without symbols!",
+  "featureMsg5": "Communicating math concepts is hard without symbols!",
   "feature6": "Open Source",
-  "feature6msg": "Completely transparent & open to contribution from all!"
+  "featureMsg6": "Completely transparent & open to contribution from all!",
+  "heroHeading": "Communicate with students online, <span>seamlessly</span>",
+  "heroText": "Dialog is the best way to encourage discussion, promote engagement, and provide resources to students in an online format!",
+  "getStartedBtn": "Get Started"
 }
