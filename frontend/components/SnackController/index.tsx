@@ -1,19 +1,30 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-// @ts-ignore
-import { withSnackbar } from "notistack";
+import { SnackbarProvider, withSnackbar } from "notistack";
 import { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 
 import { snacksSelector } from "../../stores/uiSlice/selectors";
 import { Snack } from "../../stores/uiSlice/types";
 
-interface SnackControllerProps {
-  enqueueSnackbar?: (message: string, options) => void;
+interface StateProps {
   snacks: Snack[];
 }
 
-export const UnconnectedSnackController: React.FC<SnackControllerProps> = ({
+const mapState = (state: StateProps) => ({
+  snacks: snacksSelector(state) as Snack[],
+});
+
+const connector = connect(mapState, null);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type Props = PropsFromRedux &
+  SnackbarProvider & {
+    enqueueSnackbar?: (message: string, options) => void;
+    snacks: Snack[];
+  };
+
+export const UnconnectedSnackController: React.FC<Props> = ({
   enqueueSnackbar,
   snacks,
 }) => {
@@ -33,8 +44,4 @@ export const UnconnectedSnackController: React.FC<SnackControllerProps> = ({
   return null;
 };
 
-const mapState = (state) => ({
-  snacks: snacksSelector(state) as Snack[],
-});
-
-export default connect(mapState, {})(withSnackbar(UnconnectedSnackController));
+export default connector(withSnackbar(UnconnectedSnackController));
