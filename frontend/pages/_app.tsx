@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -47,17 +47,8 @@ export default function App({
   const router = useRouter();
   const { locale, defaultLocale, pathname } = router;
   const messages = locales[locale];
-  const theme = extendTheme({
-    colors: {
-      brand: {
-        100: "#2d9cdc", // main blue
-        200: "#96cfee", // light blue
-        300: "gray.600", // dark grey text
-        400: "#4e93bb", // dark blue shadow
-      },
-    },
-  });
   return (
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     <ChakraProvider theme={theme}>
       <IntlProvider
         locale={locale}

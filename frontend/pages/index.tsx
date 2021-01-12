@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/unbound-method */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
 import React from "react";
 
 import { FeaturesList } from "../components/FeaturesList";
