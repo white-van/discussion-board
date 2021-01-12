@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Container, SimpleGrid, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 import { BiPalette } from "react-icons/bi";
 import { FaUniversity } from "react-icons/fa";
@@ -92,34 +92,38 @@ export const FeaturesList = (): JSX.Element => {
 
   return (
     <div>
+      <Box p="6"></Box>
       <Box
-        w="100%"
+        w="100vw"
         h="100%"
-        bg={useColorModeValue("primary.light", "primary.light")}
+        bg={useColorModeValue("primary.light", "primary.dark")}
         p={10}
       >
         <Text
           fontSize="3xl"
           align="center"
-          colorScheme="gray"
+          color={useColorModeValue("white.light", "white.dark")}
           fontWeight="bold"
         >
           {formatMessage(messages.featuresHeading)}
         </Text>
-        <br></br>
-        <br></br>
-        <SimpleGrid columns={{ sm: 2, md: 3 }} spacing={20}>
-          {icons.map((icon, index) => {
-            return (
-              <FeatureCard
-                key={index}
-                title={formatMessage(messages[`feature${index + 1}`])}
-                description={formatMessage(messages[`featureMsg${index + 1}`])}
-                icon={icon}
-              />
-            );
-          })}
-        </SimpleGrid>
+        <Box p="6"></Box>
+        <Container maxW="4xl" centerContent>
+          <SimpleGrid columns={{ sm: 2, md: 3 }} spacing={20}>
+            {icons.map((icon, index) => {
+              return (
+                <FeatureCard
+                  key={index}
+                  title={formatMessage(messages[`feature${index + 1}`])}
+                  description={formatMessage(
+                    messages[`featureMsg${index + 1}`]
+                  )}
+                  icon={icon}
+                />
+              );
+            })}
+          </SimpleGrid>
+        </Container>
       </Box>
     </div>
   );

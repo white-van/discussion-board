@@ -33,15 +33,28 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
       pr="5"
     >
       <Center>
-        <Icon as={icon} w={50} h={50} color="primary.light" />
+        <Icon
+          as={icon}
+          w={50}
+          h={50}
+          color={useColorModeValue("primary.light", "primary.dark")}
+        />
       </Center>
       <Center>
-        <Text fontSize="3xl" fontWeight="bold" color="grey.charcoal">
+        <Text
+          fontSize="3xl"
+          fontWeight="bold"
+          color={useColorModeValue("gray.charcoal", "white.light")}
+        >
           {title}
         </Text>
       </Center>
       <Center>
-        <Text fontSize="md" align="center" color="grey.charcoal">
+        <Text
+          fontSize="md"
+          align="center"
+          color={useColorModeValue("gray.charcoal", "white.light")}
+        >
           {description}
         </Text>
       </Center>
