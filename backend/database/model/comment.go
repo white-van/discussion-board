@@ -2,6 +2,7 @@ package model
 
 import "github.com/jinzhu/gorm"
 
+// Comment represents the schema for the comments table in postgres
 type Comment struct {
 	gorm.Model
 	CourseID int `gorm:"TYPE:integer REFERENCES courses"`

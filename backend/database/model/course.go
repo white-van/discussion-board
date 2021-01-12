@@ -2,6 +2,7 @@ package model
 
 import "github.com/jinzhu/gorm"
 
+// Course represents the schema for the courses table in postgres
 type Course struct {
 	gorm.Model
 	Name       string

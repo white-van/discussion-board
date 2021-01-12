@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/jinzhu/gorm"
+	// Required for connecting to postgres
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 

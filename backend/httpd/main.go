@@ -1,11 +1,13 @@
 package main
 
 import (
-	"pizza/database"
+	"fmt"
 	"regexp"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+
+	"pizza/database"
 )
 
 func main() {
@@ -33,7 +35,11 @@ func main() {
 	}))
 
 	db := database.Connect()
-	defer db.Close()
+	defer func() {
+		if err := db.Close(); err != nil {
+			fmt.Println("Error when closing:", err)
+		}
+	}()
 	database.CreateSchema(db)
 
 	r.GET("/ping", func(c *gin.Context) {
