@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { SnackbarProvider, withSnackbar } from "notistack";
 import { useEffect, useState } from "react";
@@ -44,4 +45,4 @@ export const UnconnectedSnackController: React.FC<Props> = ({
   return null;
 };
 
-export default connector(withSnackbar(UnconnectedSnackController));
+export default connector(withSnackbar(UnconnectedSnackController as any));
