@@ -28,7 +28,7 @@ const ContributorIcon: React.FC<ContributorProps> = ({
         borderRadius="20px"
         transition="all 0.5s cubic-bezier(0,.5,.5,1)"
         _hover={{ bg: "#bcb3bb" }}
-        w="110px"
+        w="130px"
         h="150px"
       >
         <Avatar size="xl" name={login} src={avatar_url} />
