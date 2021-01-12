@@ -1,14 +1,24 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { withSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { snacksSelector } from "../../stores/uiSlice/selectors";
+import { Snack } from "../../stores/uiSlice/types";
 
-export const UnconnectedSnackController = ({ enqueueSnackbar, snacks }) => {
+interface StateProps {
+  snacks: Snack[];
+}
+
+interface SnackControllerProps {
+  enqueueSnackbar?: (string, options) => void;
+  snacks: Snack[];
+}
+
+export const UnconnectedSnackController: React.FC<SnackControllerProps> = ({
+  enqueueSnackbar,
+  snacks,
+}) => {
   const [displayedSnacks, setSnackDisplayed] = useState({});
   useEffect(() => {
     snacks.forEach((snack) => {
@@ -17,6 +27,7 @@ export const UnconnectedSnackController = ({ enqueueSnackbar, snacks }) => {
       setSnackDisplayed(displayedSnacks);
       enqueueSnackbar(snack.message, {
         ...snack.options,
+        autoHideDuration: 5000,
         key: snack.key,
       });
     });
@@ -24,13 +35,11 @@ export const UnconnectedSnackController = ({ enqueueSnackbar, snacks }) => {
   return null;
 };
 
-const mapStateToProps = (state) => {
-  return {
-    snacks: snacksSelector(state),
-  };
-};
+const mapState = (state) => ({
+  snacks: snacksSelector(state) as Snack[],
+});
 
-export default connect(
-  mapStateToProps,
+export default connect<StateProps, null, SnackControllerProps>(
+  mapState,
   {}
 )(withSnackbar(UnconnectedSnackController));
