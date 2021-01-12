@@ -1,4 +1,10 @@
-import { Box, Container, SimpleGrid, Text, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  SimpleGrid,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import React from "react";
 import { BiPalette } from "react-icons/bi";
 import { FaUniversity } from "react-icons/fa";
