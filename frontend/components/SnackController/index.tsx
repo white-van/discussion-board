@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
+// @ts-ignore
 import { withSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
@@ -6,12 +8,8 @@ import { connect } from "react-redux";
 import { snacksSelector } from "../../stores/uiSlice/selectors";
 import { Snack } from "../../stores/uiSlice/types";
 
-interface StateProps {
-  snacks: Snack[];
-}
-
 interface SnackControllerProps {
-  enqueueSnackbar?: (string, options) => void;
+  enqueueSnackbar?: (message: string, options) => void;
   snacks: Snack[];
 }
 
@@ -39,7 +37,4 @@ const mapState = (state) => ({
   snacks: snacksSelector(state) as Snack[],
 });
 
-export default connect<StateProps, null, SnackControllerProps>(
-  mapState,
-  {}
-)(withSnackbar(UnconnectedSnackController));
+export default connect(mapState, {})(withSnackbar(UnconnectedSnackController));
