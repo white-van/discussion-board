@@ -22,66 +22,66 @@ Some terminology:
 
 ### Structure
 
-userRouter := router.Group("/user"){
+```text
+.
+├── backend
+|   |── httpd
+|   |   |── actions                         # Contains the routes for a registered user, actions include: enrollment, post creation, replies, etc.
+|   |   |   └── actionsRoutes.go
+|   |   |── auth
+|   |   |   └── authRoutes.go               # Contains the authRouter functions Login, and Register
+|   |   |── middleware
+|   |   |   |── instructorMiddleware.go     # Contains middleware for authenticating instructors and their privileges
+|   |   |   └── studentMiddleware.go        # Contains middleware for authentication the student is registered, and the actions are valid
+|   |   └── main.go
+|   |
+..................
+```
 
-    userRouter.POST("/register", handleUserRegister)
-    // The request respondst to the url matching "/user/register" and should include
-    // information such as first_name, last_name, email. How is uid being generated? will it be given to us in the request or is is
-    // it made automatically in the database and sent to the front end in a different call
+### Auth
 
-    userRouter.POST("/login", handleUserLogin)
-    // The request responds to the url matching "/user/login" and should include
-    // parameters we require for authentication (this will be done later), we can send the uid to the front end as a response here
+File: authRoutes.go
 
-    Should we add a reset password for a user route when we add authentication ? (Y)
+Functions:
 
-    userRouter.POST("/resetPassword", handleResetPassword)
-    // The request responds to the url matching "/user/resetPassword" and should include the users email
-    // in the request
+- Login
+- Register
 
-}
+Methods:
 
-The following are all routes for a specific user based on their _uid_. Certain routes should only be accessible to professors, e.g. course creation, and archive course.
+- POST
 
-specificUserRouter := router.Group("/user/:uid"){
+The _authRoutes_ file contains the functions for login and registering users. The required parameters and JSON format are
+provided in the comments of the functions.
 
-    **uid is a prerequiste for all requests below**
+The functions all correspond to urls of the form /auth/*type, where *type is either login or register.
 
-    specificUserRouter.POST("/enroll", handleEnrollment)
-    // The request responds to url matching: "/user/:uid/enroll?course=:cid"
+### Actions
 
-    specificUserRouter.POST("/:cid/createPost", handleCreatePost)
-    // The request responds to url matching "/user/:uid/:cid/createPost"
+File: actionsRoutes.go
 
-    specificUserRouter.POST("/:cid/replyToPost", handleReplyToPost)
-    // This route can be used for a user replying to posts made,
-    // the request should include information about the post that can be used to find it (tid?)
+Functions:
 
-    specificUserRouter.POST("/:cid/:tid/createComment", handleComment)
-    // The request responds to the url matching: "/user/:uid/:cid/:tid/createComment"
-    // Since each comment is specific to a thread in a specific course we will require cid, and tid for comments along with the prerequiste uid as well
+- Enroll
+- CreatePost
+- Reply
+- Comment
+- DeletePost
+- Upvote
+- CreateCourse
+- ArchiveCourse
 
-    specificUserRouter.DELETE("/:cid/:tid", handleDeletePost)
-    // The request responds to the url matching "/users/:uid/:cid/:tid/deletePost"
-    // Middleware will be required to make sure only the author of the post, or an instructor is able to delete the post
-    // for author authentication we can check the uid supplied with the author entry of the thread
+Methods:
 
-    specificUserRouter.PATCH("/:cid/:tid/:comid/upvote", handleUpvote)
-    // The request responds to the url matching "/users/:uid/:cid/:tid/:comid/upvote"
-    // This is an update method that allows users to upvote comments on a given post.
+- PATCH
+- POST
+- DELETE
 
-    Do we make some middleware for the routes below to make sure the user here is a professor and is allowed to create/archive courses?
+The _actionRoutes_ file contains the functions for user actions. The required parameters and JSON format are
+provided in the comments of the functions. The functions above have authentication middleware to determine whether certain users
+have permisson to commit certain actions.
 
-    specificUserRouter.POST("/createCourse", handleCourseCreation)
-    // This request responds to url matching "/user/:uid/createCourse"
-    // This can be used by a professor to create a course, we require cid ? (how is this generated), cname, ccode, semid, and isarc
-    // for the db entry
-
-    specificUserRouter.POST("/:cid/archiveCourse", handleArchiveCourse)
-    // This request responds to the url matching "/user/:uid/:cid/archiveCourse"
-    // and is used for archiving a course in the db, we require the cid for looking up the course in the db, and we can just update the isarc value to be true
-
-}
+The functions all correspond to urls of the form /user/:uid, where uid is the user id.
 
 ### CORS
 
