@@ -4,11 +4,13 @@ import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { SnackbarProvider } from "notistack";
 import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
 
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
+import SnackController from "../components/SnackController";
 import { locales } from "../content/locale";
 import configureStore from "../stores/store";
 import theme from "../theme";
@@ -55,11 +57,14 @@ export default function App({
         defaultLocale={defaultLocale}
         messages={messages}
       >
-        <Provider store={store}>
-          <PageWrapper title={messagesMap[pathname]}>
-            <Component {...pageProps} />
-          </PageWrapper>
-        </Provider>
+        <SnackbarProvider maxSnack={3}>
+          <Provider store={store}>
+            <SnackController />
+            <PageWrapper title={messagesMap[pathname]}>
+              <Component {...pageProps} />
+            </PageWrapper>
+          </Provider>
+        </SnackbarProvider>
       </IntlProvider>
     </ChakraProvider>
   );

@@ -1,10 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"regexp"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+
+	"pizza/database"
 )
 
 func main() {
@@ -30,6 +33,15 @@ func main() {
 			return matched
 		},
 	}))
+
+	db := database.Connect()
+	defer func() {
+		if err := db.Close(); err != nil {
+			fmt.Println("Error when closing:", err)
+		}
+	}()
+	database.CreateSchema(db)
+
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
