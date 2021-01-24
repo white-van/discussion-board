@@ -9,6 +9,7 @@ import {
   SimpleGrid,
   Text,
   useBreakpointValue,
+  useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
@@ -16,7 +17,6 @@ import { defineMessages, useIntl } from "react-intl";
 
 import { locales } from "../../content/locale";
 import { ContributorProps, getContributors } from "../../requests/github";
-import styles from "./contributors.module.css";
 
 const messages = defineMessages({
   contributorsHeading: {
@@ -56,6 +56,10 @@ const ContributorIcon: React.FC<ContributorProps> = ({
 
 export const Contributors = (): JSX.Element => {
   const { formatMessage } = useIntl();
+  const gradient = useColorModeValue(
+    "linear(to-b, #FFFFFF, #2D9CDB)",
+    "linear(to-b, #1a202c, #90cdf4)"
+  );
   const [contributorsList, setContributorsList] = useState<ContributorProps[]>(
     []
   );
@@ -73,7 +77,8 @@ export const Contributors = (): JSX.Element => {
     <Grid
       alignItems="center"
       justify="center"
-      className={styles.contributors}
+      bgGradient={gradient}
+      w="100vw"
       h={height}
     >
       <VStack>
