@@ -57,8 +57,8 @@ const ContributorIcon: React.FC<ContributorProps> = ({
 export const Contributors = (): JSX.Element => {
   const { formatMessage } = useIntl();
   const gradient = useColorModeValue(
-    "linear(to-b, #FFFFFF, #2D9CDB)",
-    "linear(to-b, #1a202c, #90cdf4)"
+    "linear(to-b, white.light, primary.light)",
+    "linear(to-b, white.dark, primary.dark)"
   );
   const [contributorsList, setContributorsList] = useState<ContributorProps[]>(
     []
