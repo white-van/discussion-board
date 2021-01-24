@@ -7,17 +7,15 @@ import { connect } from "react-redux";
 
 import { FeaturesList } from "../components/FeaturesList";
 import { HeroSection } from "../components/HeroSection";
-
 import { displaySuccessSnack } from "../stores/uiSlice/actions";
-import styles from "../styles/Home.module.css";
 
 export function Home({ displaySuccessSnack }): JSX.Element {
   return (
-    <div className={styles.container}>
+    <>
       <HeroSection />
       <FeaturesList />
       <button onClick={() => displaySuccessSnack("hey lol")}>Click me</button>
-    </div>
+    </>
   );
 }
 

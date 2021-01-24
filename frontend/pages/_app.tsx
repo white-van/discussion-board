@@ -50,7 +50,6 @@ export default function App({
   const { locale, defaultLocale, pathname } = router;
   const messages = locales[locale];
   return (
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     <ChakraProvider theme={theme}>
       <IntlProvider
         locale={locale}

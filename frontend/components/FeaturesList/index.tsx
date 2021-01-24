@@ -97,13 +97,13 @@ export const FeaturesList = (): JSX.Element => {
   ];
 
   return (
-    <div>
-      <Box p="6"></Box>
+    <>
       <Box
         w="100vw"
         h="100%"
         bg={useColorModeValue("primary.light", "primary.dark")}
         p={10}
+        mt="5%"
       >
         <Text
           fontSize="3xl"
@@ -131,6 +131,6 @@ export const FeaturesList = (): JSX.Element => {
           </SimpleGrid>
         </Container>
       </Box>
-    </div>
+    </>
   );
 };
