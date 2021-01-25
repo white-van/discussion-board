@@ -6,7 +6,10 @@ import Button from "./components/button";
 // https://chakra-ui.com/docs/theming/theme
 const colors = {
   black: "#000",
-  white: "#fff",
+  white: {
+    light: "#fff",
+    dark: "#1a202d",
+  },
   primary: {
     light: "#2D9CDB",
     dark: "#90cdf4",
