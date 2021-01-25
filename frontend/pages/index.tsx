@@ -1,24 +1,21 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable react/prop-types */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { FeaturesList } from "../components/FeaturesList";
 import { HeroSection } from "../components/HeroSection";
 import { displaySuccessSnack } from "../stores/uiSlice/actions";
 
-export function Home({ displaySuccessSnack }): JSX.Element {
+export function Home(): JSX.Element {
+  const dispatch = useDispatch();
   return (
     <>
       <HeroSection />
       <FeaturesList />
-      <button onClick={() => displaySuccessSnack("hey lol")}>Click me</button>
+      <button onClick={() => dispatch(displaySuccessSnack("hi lol"))}>
+        Click me
+      </button>
     </>
   );
 }
 
-export default connect(null, {
-  displaySuccessSnack,
-})(Home);
+export default Home;
