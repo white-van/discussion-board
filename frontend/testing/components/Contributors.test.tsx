@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
+import { act, waitFor } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import React from "react";
 
@@ -26,21 +29,39 @@ describe("Contributors", () => {
 
   expect.extend(toHaveNoViolations);
   it("Check axe violations", async () => {
-    const { container } = renderWrapped(<Contributors />);
+    let component;
+    await act(async () => {
+      component = renderWrapped(<Contributors />);
+      await waitFor(() =>
+        expect(component.queryByText("@jcserv")).toBeInTheDocument()
+      );
+    });
+    const { container } = component;
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  it("Basic render functionality", () => {
-    const { queryByText } = renderWrapped(<Contributors />);
+  it("Basic render functionality", async () => {
+    let component;
+    await act(async () => {
+      component = renderWrapped(<Contributors />);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      await waitFor(() =>
+        expect(component.queryByText("@jcserv")).toBeInTheDocument()
+      );
+    });
+    const { queryByText } = component;
     expect(queryByText(locales.en.contributorsHeading)).toBeInTheDocument();
   });
 
-  it("Calls retrieveContributors on mount", () => {
-    renderWrapped(<Contributors />);
+  it("Calls retrieveContributors on mount", async () => {
+    await act(async () => {
+      const component = renderWrapped(<Contributors />);
+      await waitFor(() =>
+        expect(component.queryByText("@jcserv")).toBeInTheDocument()
+      );
+    });
     expect(getContributors).toHaveBeenCalledWith();
   });
-
-  // mock contributors and see that it renders each one
 });
