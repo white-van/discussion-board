@@ -135,7 +135,7 @@ const WizardFormComponent = ({
   );
 };
 
-const ComponentWithFormik = withFormik<any, FormValues>({
+const ComponentWithFormik = withFormik({
   validationSchema: SignupSchema,
   mapPropsToValues: () => initialValues,
   validateOnMount: true,
