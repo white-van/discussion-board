@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { createAction } from "@reduxjs/toolkit";
+import { Action, createAction } from "@reduxjs/toolkit";
 
 import { formatName } from "../helpers";
 import { uiReducerName } from "./adapter";
@@ -17,7 +16,11 @@ export const displaySnack = createAction<Snack>(
   formatName(uiReducerName, "displaySnack")
 );
 
-export const displaySuccessSnack = (message: string) => {
+export interface SnackAction extends Action<string> {
+  payload: Snack;
+}
+
+export const displaySuccessSnack = (message: string): SnackAction => {
   return displaySnack({
     key: Math.random(),
     message,
@@ -26,7 +29,7 @@ export const displaySuccessSnack = (message: string) => {
   });
 };
 
-export const displayErrorSnack = (message: string) => {
+export const displayErrorSnack = (message: string): SnackAction => {
   return displaySnack({
     key: Math.random(),
     message,
@@ -35,7 +38,7 @@ export const displayErrorSnack = (message: string) => {
   });
 };
 
-export const displayWarningSnack = (message: string) => {
+export const displayWarningSnack = (message: string): SnackAction => {
   return displaySnack({
     key: Math.random(),
     message,
@@ -44,7 +47,7 @@ export const displayWarningSnack = (message: string) => {
   });
 };
 
-export const displayInfoSnack = (message: string) => {
+export const displayInfoSnack = (message: string): SnackAction => {
   return displaySnack({
     key: Math.random(),
     message,
@@ -52,3 +55,10 @@ export const displayInfoSnack = (message: string) => {
     dismissed: false,
   });
 };
+
+export interface SnackActions {
+  displaySuccessSnack: typeof displaySuccessSnack;
+  displayErrorSnack: typeof displayErrorSnack;
+  displayWarningSnack: typeof displayWarningSnack;
+  displayInfoSnack: typeof displayInfoSnack;
+}
