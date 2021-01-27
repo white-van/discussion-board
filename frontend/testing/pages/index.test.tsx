@@ -2,7 +2,9 @@ import { axe, toHaveNoViolations } from "jest-axe";
 import React from "react";
 
 import Home from "../../pages";
-import { renderWrapped } from "../helpers";
+import { renderWrapped, setupTests } from "../helpers";
+
+setupTests();
 
 describe("HomePage", () => {
   expect.extend(toHaveNoViolations);
