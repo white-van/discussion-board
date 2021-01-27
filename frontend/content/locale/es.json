@@ -3,5 +3,21 @@
   "heroText": "ES-heroText",
   "getStartedBtn": "ES-getStartedBtn",
   "contributorsHeading": "ES-contributorsHeading",
-  "contributorsText": "ES-contributorsText"
+  "contributorsText": "ES-contributorsText",
+  "featuresHeading": "ES-Engineered for student success",
+  "feature1": "ES-Well-designed",
+  "featureMsg1": "ES-Designed to be visually appealing with usability in mind",
+  "feature2": "ES-Moderation",
+  "featureMsg2":
+    "ES-Built with all the tools you need to ensure responsible usage",
+  "feature3": "ES-UofT Support",
+  "featureMsg3":
+    "ES-Integrated with Quercus & Shibboleth for a seamless instructor experience",
+  "feature4": "ES-Accessible",
+  "featureMsg4":
+    "ES-Follows WAI-ARIA principles, enables students with disabilties",
+  "feature5": "ES-LaTeX/Markdown",
+  "featureMsg5": "ES-Communicating math concepts is hard without symbols!",
+  "feature6": "ES-Open Source",
+  "featureMsg6": "ES-Completely transparent & open to contribution from all!"
 }
