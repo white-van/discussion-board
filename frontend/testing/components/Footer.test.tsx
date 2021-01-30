@@ -2,7 +2,10 @@ import { render } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import React from "react";
 
-import { Footer } from "../../components/Footer";
+import { Footer, footerLinks } from "../../components/Footer";
+import { setupTests } from "../helpers";
+
+setupTests();
 
 describe("Footer", () => {
   expect.extend(toHaveNoViolations);
@@ -15,6 +18,8 @@ describe("Footer", () => {
 
   it("Basic render functionality", () => {
     const { queryByText } = render(<Footer />);
-    expect(queryByText("Hello")).toBeInTheDocument();
+    footerLinks.forEach((link) => {
+      expect(queryByText(link)).toBeInTheDocument();
+    });
   });
 });
